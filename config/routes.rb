@@ -2,7 +2,14 @@ Rails.application.routes.draw do
   resources :admins do
     get "signin" => "admins#signin", on: :collection
     post "signin" => "admins#login", on: :collection
+
+    get "lostpassword" => "admins#lostpassword", on: :collection
+    post "lostpassword" => "admins#forgotpassword", on: :collection
+
     end
+    get "log_out" => "sessions#destroy", :as => "log_out"
+    get "log_in" => "sessions#new", :as => "log_in"
+    resources :sessions
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

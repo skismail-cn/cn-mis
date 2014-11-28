@@ -2,22 +2,5 @@
 <% @page_title = "UserAuth | Signup" %>
 <div class="Sign_Form">
   <h1>Sign Up</h1>
-  <%= form_for(:admin, :url => {:controller => 'admins', :action => 'create'}) do |f| %>
-    <p> Username:</br> <%= f.text_field :username%> </p>
-    <p> Email:</br> <%= f.text_field :email%> </p>
-    <p> Password:</br> <%= f.password_field :password%></p>
-    <p> Password Confirmation:</br> <%= f.password_field :password_confirmation%> </p>
-    <%= f.submit :Signup %>
-  <% end %>
-
-  <% if @admin.errors.any? %>
-		<div id="error_explanation">
-			<h2><%= pluralize(@admin.errors.count, "error") %> prohibited this article from being saved:</h2>
-			<ul>
-			<% @admin.errors.full_messages.each do |msg| %>
-			<li><%= msg %></li>
-			<% end %>
-			</ul>
-		</div>
-  <% end %>
+  <%= render 'form' %>
 </div>

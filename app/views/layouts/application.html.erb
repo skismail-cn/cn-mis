@@ -12,15 +12,28 @@
 	<div id="header">
 		<!-- <div align="center" style="padding:5px;"> Demo application Dev:Ismail Guidence: Debobrata Sinha</div> -->
 		<div id="logo">MIS</div>
-	</div>
+		
+		<div id="user_nav">
+		  <% if current_user %>
+		    Logged in as <%= current_user.email %>.
+		    <%= link_to "Log out", log_out_path %>
+		  <% else %>
+		    <%= link_to "Sign up", new_admin_path %> or
+		    <%= link_to "log in", log_in_path %>
+		  <% end %>
+		</div>
 
-	<div id="mainmenu">
-		<ul id="yw0">
-			<li class="active">
-				
-			</li>
-		</ul>
-	</div>
+		<% flash.each do |name, msg| %>
+		  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+		<% end %>
+
+		<div id="mainmenu">
+			<ul id="yw0">
+				<li class="active">
+					
+				</li>
+			</ul>
+		</div>
 
 	<div id="content">
 		<%= yield %>
