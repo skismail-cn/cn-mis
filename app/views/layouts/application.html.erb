@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CnMis</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div id="page" class="container">
+	<div id="header">
+		<!-- <div align="center" style="padding:5px;"> Demo application Dev:Ismail Guidence: Debobrata Sinha</div> -->
+		<div id="logo">MIS</div>
+	</div>
+
+	<div id="mainmenu">
+		<ul id="yw0">
+			<li class="active">
+				
+			</li>
+		</ul>
+	</div>
+
+	<div id="content">
+		<%= yield %>
+	</div>
+	
+	<div class="clear"></div>
+
+	<div id="footer">
+			Copyright &copy; 2014 by CN.<br>
+			All Rights Reserved.<br>
+			Powered by rails Framework.
+	</div>
+</div>
+
+</body>
+</html>
