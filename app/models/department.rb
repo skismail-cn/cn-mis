@@ -1,6 +1,6 @@
 class Department < ActiveRecord::Base
 	validates :name, :presence => true, :uniqueness => true, :length => { :in => 5..20 }
-	validates :status, :presence => true
+	#validates :status, :presence => true, :default=>true
 
 	self.per_page = 2
 	def self.as_csv

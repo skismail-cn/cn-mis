@@ -20,6 +20,8 @@
 			    <%= link_to "Log out", log_out_path %>
 			    <%= link_to "View account", admin_path(current_user) %>
 			    <%= link_to "Update account", edit_admin_path(current_user) %>
+			    <%= link_to "Update password", changepassword_admins_path %>
+			    
 			    <%= link_to 'Destroy account', admin_path(current_user), method: :delete, data: { confirm: 'Are you sure?' } %>
 		    </div>
 		  <% else %>

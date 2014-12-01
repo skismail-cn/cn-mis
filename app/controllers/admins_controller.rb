@@ -62,7 +62,7 @@ class AdminsController < ApplicationController
     end
 
     def changepassword
-        @admin = Admin.find(params[:id])
+        @admin = Admin.find(session[:user_id])
     end
 
     def updatepassword
