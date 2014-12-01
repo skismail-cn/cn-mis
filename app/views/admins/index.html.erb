@@ -1,8 +1,4 @@
 <% if @admins.length>0 %>
-  <ul>
-    <li><%= link_to 'Create admin', new_admin_path %></li>
-  </ul>
-
   <table>
     <tr>
       <th>Id</th>
@@ -22,6 +18,5 @@
   <% else %>
   <ul>
     <li>No administrator has been created yet. </li>
-    <li><%= link_to 'Create admin', new_admin_path %></li>
   </ul>
 <% end %>
