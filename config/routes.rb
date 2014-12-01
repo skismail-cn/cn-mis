@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     get "log_in" => "sessions#new", :as => "log_in"
     resources :sessions
     resources :departments
+
+    
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
