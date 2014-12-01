@@ -1,0 +1,15 @@
+<p>
+  <strong>id:</strong>
+  <%= @department.id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @department.name %>
+</p>
+ 
+<p>
+  <strong>Status:</strong>
+  <%= @department.status %>
+</p>
+<%= link_to 'Edit department', edit_department_path(@department) %>

@@ -1,0 +1,41 @@
+<div id="department_actions">
+	<table>
+		<tr>
+			<td><%= link_to "Add department", new_department_path %></td>
+		</tr>
+	</table>
+</div>
+
+
+
+<% if @departments.length>0 %>
+	<p>Download:<%= link_to "CSV", departments_path(format: "csv") %></p>
+	<input type="checkbox" name="sample" class="selectall"/> Select all</label>
+  	<table>
+	    <tr>
+	      <th>Check box</th>
+	      <th>Id</th>
+	      <th>Name</th>
+	      <th>Status</th>
+	      <th colspan="4"></th>
+	    </tr>
+
+    	<% @departments.each do |department| %>
+	     	<tr>
+	     		<td><input type="checkbox" name="sample[]" class="checkme" /></td>
+		      	<td><%= department.id %></td>
+		      	<td><%= department.name %></td>
+		      	<td><%= department.status %></td>
+		      	<td><%= link_to 'Show', department_path(department) %></td>
+      			<td><%= link_to 'Edit', edit_department_path(department) %></td>
+      			<td><%= link_to 'Destroy', department_path(department), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	     	</tr>
+    	<% end %>
+  	</table>
+  	<!-- #render page links in the view: -->
+	<%= will_paginate @posts %>
+  <% else %>
+  <ul>
+    <li>No departments has been created yet.</li>
+  </ul>
+<% end %>
