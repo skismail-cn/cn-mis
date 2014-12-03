@@ -1,0 +1,29 @@
+<% if @departments.length>0 %>
+	<input type="checkbox" name="sample" class="selectall"/> Select all</label>
+  	<table>
+	    <tr>
+	      <th>Check box</th>
+	      <th>Id</th>
+	      <th>Name</th>
+	      <th>Status</th>
+	      <th colspan="4"></th>
+	    </tr>
+
+    	<% @departments.each do |department| %>
+	     	<tr>
+	     		<td><input type="checkbox" name="sample[]" class="checkme" /></td>
+		      	<td><%= department.id %></td>
+		      	<td><%= department.name %></td>
+		      	<td><%= department.status %></td>
+		      	<td><%= link_to 'Show', department_path(department) %></td>
+      			<td><%= link_to 'Edit', edit_department_path(department) %></td>
+      			<td><%= link_to 'Destroy', department_path(department), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	     	</tr>
+    	<% end %>
+  	</table>
+  <% else %>
+  	<ul>
+  		<li>No departments found.</li>
+    	<li><%= link_to 'Search again', search_departments_path %></li>
+  	</ul>
+<% end %>

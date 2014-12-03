@@ -1,0 +1,50 @@
+<div id="designation_actions">
+	<table>
+		<tr>
+			<td><%= link_to "Add designation", new_designation_path %></td>
+			<td><%= link_to "Download:CSV", designation_index_path(format: "csv") %></td>
+		</tr>
+	</table>
+</div>
+
+<% if @designations.length > 0 %>
+	
+	<div id="search_designations">
+		<%= render partial:"search" %>
+	</div>
+
+	<div>
+		<%= check_box_tag(:Select_all_designations) %>
+		<%= label_tag(:Select_all_designations, "Select All") %>
+	</div>
+	
+	<table>
+		<tr>
+			<th></th>
+			<th>Designation Id</th>
+			<th>Designation Name</th>
+			<th>Department Name</th>
+			<th>Status</th>
+			<th colspan="4">Permitted Operations</th>
+		</tr>
+
+		<% @designations.each do |designation|%>
+			<tr>
+				<td><input type="checkbox" name="sample[]" class="check_designation" /></td>
+				<td><%= designation.id %></td>
+				<td><%= designation.name %></td>
+				<td><%= designation.department.name %></td>
+				<td><%= designation.status %></td>
+				<td><%= link_to "Show", designation_path(designation) %></td>
+				<td><%= link_to "Update", edit_designation_path(designation) %></td>
+				<td><%= link_to 'Destroy', designation_path(designation), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			</tr>
+		<% end %>
+	</table>
+	<!-- #render page links in the view: -->
+	<%= will_paginate @designations %>
+<%else%>
+	<div id="no_designation">
+		<h2>No designations added yet</h2>
+	</div>
+<%end%>

@@ -1,0 +1,25 @@
+<div id="Show_designation">
+	<h3>Details of designation "<%= @designation.name%>"</h3>
+	<table>
+		<tr>
+			<th>Designation Id</th>
+			<th>Designation Name</th>
+			<th>Designation Status</th>
+			<th>Department Id</th>
+			<th>Department Name</th>
+			<th>Department Status</th>
+			<th colspan="4">Permitted Operations</th>
+		</tr>
+		<tr>
+			<td><%=@designation.id %></td>
+			<td><%=@designation.name %></td>
+			<td><%=@designation.status %></td>
+			<td><%=@designation.department.id %></td>
+			<td><%=@designation.department.name %></td>
+			<td><%=@designation.department.status %></td>
+			<td><%= link_to "Edit",edit_designation_path(@designation)%></td>
+			<td><%= link_to 'Destroy', designation_path(@designation), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			<td><%= link_to "Back",designation_index_path%></td>
+		</tr>
+	</table>
+</div>
