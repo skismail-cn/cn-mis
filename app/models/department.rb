@@ -1,8 +1,10 @@
 class Department < ActiveRecord::Base
+	has_many :designations, dependent: :destroy
 	validates :name, :presence => true, :uniqueness => true, :length => { :in => 5..20 }
 	#validates :status, :presence => true, :default=>true
 
-	self.per_page = 2
+	self.per_page = 5
+	
 	def self.as_csv
 		CSV.generate do |csv|
 			csv << column_names

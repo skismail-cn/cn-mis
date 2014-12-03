@@ -1,21 +1,26 @@
 Rails.application.routes.draw do
   resources :admins do
-    #get "signin" => "admins#signin", on: :collection
-    #post "signin" => "admins#login", on: :collection
+    get "lostpassword" => "admins#lostpassword", on: :collection
+    post "lostpassword" => "admins#forgotpassword", on: :collection
+    get "changepassword" => "admins#changepassword", on: :collection
+    post "changepassword" => "admins#updatepassword", on: :collection
+  end
+    
+  get "log_out" => "sessions#destroy", :as => "log_out"
+  get "log_in" => "sessions#new", :as => "log_in"
 
-      get "lostpassword" => "admins#lostpassword", on: :collection
-      post "lostpassword" => "admins#forgotpassword", on: :collection
-      get "changepassword" => "admins#changepassword", on: :collection
-      post "changepassword" => "admins#updatepassword", on: :collection
-    end
-    get "log_out" => "sessions#destroy", :as => "log_out"
-    get "log_in" => "sessions#new", :as => "log_in"
-    resources :sessions
-    resources :departments do
-        get "search" => "departments#search", on: :collection
-        post "search" => "departments#search_results", on: :collection
-      end
+  resources :sessions
 
+
+  resources :designation do
+    get "search" => "designation#search", on: :collection
+    post "search" => "designation#search_results", on: :collection
+  end
+  
+  resources :departments do
+    get "search" => "departments#search", on: :collection
+    post "search" => "departments#search_results", on: :collection
+  end
     
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
