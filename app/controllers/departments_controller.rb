@@ -47,6 +47,14 @@ class DepartmentsController < ApplicationController
  
   		redirect_to departments_path
 	end
+
+	def search
+	end
+
+	def search_results
+		@departments = Department.where("name LIKE '%#{params[:name]}%'")
+		#render plain: @departments.inspect
+	end
  
 	private
   		def department_params

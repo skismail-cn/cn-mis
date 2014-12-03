@@ -11,7 +11,10 @@ Rails.application.routes.draw do
     get "log_out" => "sessions#destroy", :as => "log_out"
     get "log_in" => "sessions#new", :as => "log_in"
     resources :sessions
-    resources :departments
+    resources :departments do
+        get "search" => "departments#search", on: :collection
+        post "search" => "departments#search_results", on: :collection
+      end
 
     
   # The priority is based upon order of creation: first created -> highest priority.
