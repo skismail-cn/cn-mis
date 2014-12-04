@@ -7,18 +7,18 @@
 	</table>
 </div>
 
-
-
 <% if @departments.length>0 %>
 	<p>Download:<%= link_to "CSV", departments_path(format: "csv") %></p>
-	<input type="checkbox" name="sample" class="selectall"/> Select all</label>
   	<table>
 	    <tr>
-	      <th>Check box</th>
-	      <th>Id</th>
-	      <th>Name</th>
-	      <th>Status</th>
-	      <th colspan="4"></th>
+			<th>
+				<%= check_box_tag(:selectall_departments) %>
+				<%= label_tag(:selectall_departments, "Select All") %>
+			</th>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Status</th>
+			<th colspan="4"></th>
 	    </tr>
 
     	<% @departments.each do |department| %>

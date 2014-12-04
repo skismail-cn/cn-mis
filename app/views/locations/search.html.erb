@@ -1,0 +1,41 @@
+<div id="location_actions">
+	<table>
+		<tr>
+			<td><%= link_to "Add location", new_location_path %></td>
+			<td><%= link_to "Download:CSV", locations_path(format: "csv") %></td>
+			<td><%= link_to "Back", locations_path %></td>
+		</tr>
+	</table>
+</div>
+
+<% if @locations.length > 0 %>
+	
+	<table>
+		<tr>
+			<th>
+				<%= check_box_tag(:Select_all_locations) %>
+				<%= label_tag(:Select_all_locations, "Select All") %>
+			</th>
+			<th>Location Id</th>
+			<th>Location Name</th>
+			<th>Status</th>
+			<th colspan="4">Permitted Operations</th>
+		</tr>
+
+		<% @locations.each do |location|%>
+			<tr>
+				<td><input type="checkbox" name="sample[]" class="check_location" /></td>
+				<td><%= location.id %></td>
+				<td><%= location.name %></td>
+				<td><%= location.status %></td>
+				<td><%= link_to "Show", location_path(location) %></td>
+				<td><%= link_to "Update", edit_location_path(location) %></td>
+				<td><%= link_to 'Destroy', location_path(location), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			</tr>
+		<% end %>
+	</table>
+<%else%>
+	<div id="no_locations">
+		<h2>No locations found</h2>
+	</div>
+<%end%>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141203101148) do
+ActiveRecord::Schema.define(version: 20141204063758) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,5 +41,12 @@ ActiveRecord::Schema.define(version: 20141203101148) do
   end
 
   add_index "designations", ["department_id"], name: "index_designations_on_department_id", using: :btree
+
+  create_table "locations", force: true do |t|
+    t.string   "name"
+    t.boolean  "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

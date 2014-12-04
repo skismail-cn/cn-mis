@@ -52,22 +52,18 @@ class DesignationController < ApplicationController
 	end
 
 	def search_results
-		if params[:name]!="" || params[:department]!=""
-			query_string=""
-			if params[:name]!="" && params[:department]!=""
-				query_string ="designations.name LIKE '%#{params[:name]}%' OR departments.name LIKE '%#{params[:department]}%'"
-			else
-				if params[:name]!=""
-					query_string = "designations.name LIKE '%#{params[:name]}%'"
-				end
-				if params[:department]!=""
-					query_string += "departments.name LIKE '%#{params[:department]}%'"
-				end
-			end
-			@designations = Designation.joins(:department).where(query_string)
+		
+		if params[:name]!="" && params[:department]!=""
+			query_string ="designations.name LIKE '%#{params[:name]}%' AND departments.name LIKE '%#{params[:department]}%'"
+		elsif params[:name]!=""
+			query_string = "designations.name LIKE '%#{params[:name]}%'"
+		elsif params[:department]!=""
+			query_string = "departments.name LIKE '%#{params[:department]}%'"
 		else
-			redirect_to designation_index_path
+			query_string= "designations.id < 0"
 		end
+
+		@designations = Designation.joins(:department).where(query_string).order(department_id: :desc)
 	end
 
 	private

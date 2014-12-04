@@ -1,0 +1,6 @@
+<%= form_tag(controller: "locations", action: "search") do %>
+  <%= label_tag(:name, "Search for locations:") %>
+  <%= label_tag(:name, "Name") %>
+  <%= text_field_tag(:name) %>
+  <%= submit_tag("Search") %>
+<% end %>

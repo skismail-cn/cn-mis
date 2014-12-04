@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 checkbox_handler = ->
-	$('body').on "click", ".selectall", ->  
+	$('body').on "click", "#selectall_departments", ->  
 	    if ($(this).is(':checked'))
 	      $('div input').attr('checked', true)
 	    else

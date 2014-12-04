@@ -1,5 +1,5 @@
 class DepartmentsController < ApplicationController
-	require 'csv'
+	
 	def index
 		@departments = Department.paginate(:page => params[:page])
 		respond_to do |format|

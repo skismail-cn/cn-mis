@@ -1,0 +1,26 @@
+<div id="location_form">
+	<%= form_for @location do |f|%>
+		<% if @location.errors.any? %>
+			<h3><%= pluralize(@location.errors.count, "Error")%> prohibitate this location to save</h3>
+			<ul>
+				<% @location.errors.full_messages.each do |msg|%>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		<% end %>
+
+		<div id="location_form_elements">
+			<p>
+				<%= f.label(:name)%>
+				<%= f.text_field(:name)%>
+			</p>
+			<p>
+				<%= f.label(:status)%>
+				<%= f.check_box(:status)%>
+			</p>
+			<p>
+				<%= f.submit%>
+			</p>
+		</div>
+	<% end %>
+</div>

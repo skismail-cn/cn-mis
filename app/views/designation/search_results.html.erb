@@ -9,15 +9,13 @@
 </div>
 
 <% if @designations.length > 0 %>
-
-	<div>
-		<%= check_box_tag(:Select_all_designations) %>
-		<%= label_tag(:Select_all_designations, "Select All") %>
-	</div>
 	
 	<table>
 		<tr>
-			<th></th>
+			<th>
+				<%= check_box_tag(:Select_all_designations) %>
+				<%= label_tag(:Select_all_designations, "Select All") %>
+			</th>
 			<th>Designation Id</th>
 			<th>Designation Name</th>
 			<th>Department Name</th>

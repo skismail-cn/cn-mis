@@ -11,7 +11,6 @@ Rails.application.routes.draw do
 
   resources :sessions
 
-
   resources :designation do
     get "search" => "designation#search", on: :collection
     post "search" => "designation#search_results", on: :collection
@@ -20,6 +19,10 @@ Rails.application.routes.draw do
   resources :departments do
     get "search" => "departments#search", on: :collection
     post "search" => "departments#search_results", on: :collection
+  end
+
+  resources :locations do
+    post "search" => "locations#search", on: :collection
   end
     
   # The priority is based upon order of creation: first created -> highest priority.
