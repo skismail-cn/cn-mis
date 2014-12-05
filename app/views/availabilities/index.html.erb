@@ -1,0 +1,43 @@
+<div id="Avalibility_actions">
+	<table>
+		<tr>
+			<th><%= link_to "Add Avalibility",new_availability_path %></th>
+			<th><%= render "search"%></th>
+		</tr>
+	</table>
+</div>
+
+<% if @availabilities && @availabilities.length > 0 %>
+	<div id="List_availablity">
+	<div><%= link_to "Download CSV", availabilities_path(format: "csv") %></div>
+		<table>
+			<tr>
+				<th>
+					<%= check_box_tag(:Select_all_availability) %>
+					<%= label_tag(:Select_all_availability, "Select All") %>
+				</th>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Status</th>
+				<th colspan="3">Actions</th>
+			</tr>
+			<% @availabilities.each do |avalibility|%>
+				<tr>
+					<td>
+						<input type="checkbox" name="sample[]" class="check_availability" />
+					</td>
+					<td><%= avalibility.id%></td>
+					<td><%= avalibility.name%></td>
+					<td><%= avalibility.status%></td>
+					<td><%= link_to "View",availability_path(avalibility)%></td>
+					<td><%= link_to "Update",edit_availability_path(avalibility)%></td>
+					<td><%= link_to "Delete",availability_path(avalibility),method: :delete,data: { confirm: 'Are you sure?' } %></td>
+				</tr>
+			<%end%>
+		</table>
+		<!-- #render page links in the view: -->
+		<%= will_paginate @posts %>
+	</div>
+<%else%>
+	<h3>No availability found</h3>
+<%end%>
