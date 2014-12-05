@@ -52,7 +52,7 @@ class DepartmentsController < ApplicationController
 	end
 
 	def search_results
-		@departments = Department.where("name LIKE '%#{params[:name]}%'")
+		@departments = Department.where("name ILIKE ?","%#{params[:name]}%").order(:name)
 		#render plain: @departments.inspect
 	end
  

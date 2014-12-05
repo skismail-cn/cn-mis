@@ -7,7 +7,7 @@
 	</table>
 </div>
 
-<% if @locations.length >0 %>
+<% if @locations && @locations.length >0 %>
 	<div><%= link_to "Download CSV", locations_path(format: "csv") %></div>
 
 	<table>

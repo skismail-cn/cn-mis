@@ -48,7 +48,7 @@ class LocationsController < ApplicationController
 		if ""==params[:name] || " " == params[:id]
 			redirect_to locations_path, :notice => "No locations matched your criteria!"
 		else
-			@locations = Location.where("name LIKE '%#{params[:name]}%'")
+			@locations = Location.where("name ILIKE ?","%#{params[:name]}%").order(:name)
 		end
 	end
 

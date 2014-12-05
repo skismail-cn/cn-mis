@@ -26,9 +26,6 @@
 				<%= link_to "Admin log in", log_in_path %>
 				<%= link_to "Forget password ", lostpassword_admins_path %>
 			<% end %>
-		  	<% flash.each do |name, msg| %>
-		  		<%= content_tag :div, msg, :id => "flash_#{name}", :class => "flash-notice" %>
-			<% end %>
 		</div>
 
 		<div id="mainmenu">
@@ -37,10 +34,14 @@
 			  <li><%= link_to "Departments" ,departments_path %></li>
 			  <li><%= link_to "Designations" ,designation_index_path %></li>
 			  <li><%= link_to "Locations" ,locations_path %></li>
+			  <li><%= link_to "Availabilities" ,availabilities_path %></li>
 			</ul>
 		</div>
 
 	<div id="content">
+		<% flash.each do |name, msg| %>
+		  	<%= content_tag :div, msg, :id => "flash_#{name}", :class => "flash-notice" %>
+		<% end %>
 		<%= yield %>
 	</div>
 	
