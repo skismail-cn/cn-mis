@@ -28,6 +28,12 @@ Rails.application.routes.draw do
   resources :availabilities do
     post "search" => "availabilities#search", on: :collection
   end
+
+  resources :skills do
+    post "search" =>"skills#search", on: :collection
+  end
+
+  resources :members
   
     
   # The priority is based upon order of creation: first created -> highest priority.

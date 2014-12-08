@@ -1,0 +1,41 @@
+<div id="location_actions">
+	<table>
+		<tr>
+			<td><%= link_to "Add skill", new_skill_path %></td>
+			<td><%= link_to "Download:CSV", skills_path(format: "csv") %></td>
+			<td><%= link_to "Back", skills_path %></td>
+		</tr>
+	</table>
+</div>
+
+<% if @skills && @skills.length > 0 %>
+	
+	<table>
+		<tr>
+			<th>
+				<%= check_box_tag(:select_all_skills) %>
+				<%= label_tag(:select_all_skills, "Select All") %>
+			</th>
+			<th>Skill Id</th>
+			<th>Skill Name</th>
+			<th>Status</th>
+			<th colspan="4">Permitted Operations</th>
+		</tr>
+
+		<% @skills.each do |skill|%>
+			<tr>
+				<td><input type="checkbox" name="sample[]" class="check_skill" /></td>
+				<td><%= skill.id %></td>
+				<td><%= skill.name %></td>
+				<td><%= skill.status %></td>
+				<td><%= link_to "Show", skill_path(skill) %></td>
+				<td><%= link_to "Update", edit_skill_path(skill) %></td>
+				<td><%= link_to 'Destroy', skill_path(skill), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			</tr>
+		<% end %>
+	</table>
+<%else%>
+	<div id="no_skills">
+		<h2>No skill found</h2>
+	</div>
+<%end%>

@@ -1,0 +1,27 @@
+<div id="skill_form">
+
+	<%= form_for @skill do |f|%>
+
+		<% if @skill.errors.any?%>
+			<h4><%= pluralize(@skill.errors.count,"Error")%> prohibited skill from saving</h4>
+			<ul>
+				<% @skill.errors.full_messages.each do |msg|%>
+					<li><%= msg %></li>
+				<%end%>
+			</ul>
+		<%end%>
+		<div id="skill_form_elements">
+			<p>
+				<%= f.label(:name)%>
+				<%= f.text_field(:name)%>
+			</p>
+			<p>
+				<%= f.label(:status)%>
+				<%= f.check_box(:status)%>
+			</p>
+			<p>
+				<%= f.submit %>
+			</p>
+		</div>
+	<%end%>
+</div>

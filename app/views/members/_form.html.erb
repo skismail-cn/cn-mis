@@ -1,0 +1,33 @@
+<div id="add_member_form">
+	<%= form_for @member do |f|%>
+		<% if @member.errors.any? %>
+			<div id="error">
+				<%= pluralize(@member.errors.count,"Error")%> prohibited this member form saving.
+				<ul>
+					<% @member.errors.fulf_messages.each do |msg|%>
+						<li><%= msg %></li>
+					<% end %>
+				</ul>
+			</div>
+		<% end %>
+
+		<div id="form_elements">
+			<p>
+				<%= f.label :Name %>
+				<%= f.text_field :Name %>
+			</p>
+			<p>
+				<%= f.label :Email%>
+				<%= f.text_field :Email %>
+			</p>
+			<p>
+				<%= f.label :Password%>
+				<%= f.password_field :Password %>
+			</p>
+			<p>
+				<%= f.label :Confirm_Password%>
+				<%= f.password_field :Confirm_Password %>
+			</p>
+		</div>
+	<% end %>
+</div>

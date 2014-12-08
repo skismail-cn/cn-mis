@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Name: MyString
+  Email: MyString
+  Joining_Date: 2014-12-08
+  Confirmation_Date: 2014-12-08
+  Hot_Skills: MyString
+  Salary: 9.99
+  Reporting_To: 1
+  Earned_Leave: 1
+  Casual_Leave: 1
+  Sick_Leave: 1
+  Password: MyString
+  Confirm_Password: MyString
+  designation_id: 
+  department_id: 
+  location_id: 
+
+two:
+  Name: MyString
+  Email: MyString
+  Joining_Date: 2014-12-08
+  Confirmation_Date: 2014-12-08
+  Hot_Skills: MyString
+  Salary: 9.99
+  Reporting_To: 1
+  Earned_Leave: 1
+  Casual_Leave: 1
+  Sick_Leave: 1
+  Password: MyString
+  Confirm_Password: MyString
+  designation_id: 
+  department_id: 
+  location_id: 

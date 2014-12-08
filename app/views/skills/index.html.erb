@@ -1,0 +1,41 @@
+<div id="Skills_actions">
+	<table>
+		<tr>
+			<td><%= link_to "Add skill",new_skill_path %></td>
+			<td><%= render "search"%></td>
+		</tr>
+	</table>
+</div>
+<% if @skills && @skills.length>0 %>
+	<div id="Skills_list">
+		<div><%= link_to "Download CSV",skills_path(format: "csv") %></div>
+		<table>
+			<tr>
+				<th>
+					<%= check_box_tag(:select_all_skills) %>
+					<%= label_tag(:select_all_skills,"Select all")%>
+				</th>
+				<th>Skill Id</th>
+				<th>Skill Name</th>
+				<th>Skill Status</th>
+				<th colspan="3">Operations</th>
+			</tr>
+
+			<% @skills.each do |skill| %>
+				<tr>
+					<td><input type="checkbox" name="sample[]" class="check_skill"></td>
+					<td><%= skill.id%></td>
+					<td><%= skill.name%></td>
+					<td><%= skill.status%></td>
+					<td><%= link_to "View",skill_path(skill)%></td>
+					<td><%= link_to "Edit",edit_skill_path(skill)%></td>
+					<td><%= link_to "Delete",skill_path(skill), method: :delete,data:{confirm: "Are you sure?"}%></td>
+				</tr>
+			<% end %>
+		</table>
+		<!-- #render page links in the view: -->
+		<%= will_paginate @posts %>
+	</div>
+<% else%>
+<h3>No skills found</h3>
+<% end %>
