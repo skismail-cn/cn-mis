@@ -1,1 +1,39 @@
-<%= link_to "Add member",new_member_path %>
+<div id="members_actions">
+	<table>
+		<tr>
+			<td><%= link_to "Add member",new_member_path %></td>
+			<td><%= link_to "Search department", search_members_path %></td>
+		</tr>
+	</table>
+</div>
+
+<% if @members && @members.length>0%>
+	<div id="member_list">
+		<table>
+			<tr>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Reporting_To</th>
+				<th>designation</th>
+				<th>department</th>
+				<th>location</th>
+				<th colspan="3">Operations</th>
+			</tr>
+			<% @members.each do |member|%>
+				<tr>
+					<td><%= member.Name%></td>
+					<td><%= member.Email%></td>
+					<td><%= member.Reporting_To%></td>
+					<td><%= member.designation.name%></td>
+					<td><%= member.department.name%></td>
+					<td><%= member.location.name%></td>
+					<td><%= link_to "View",member_path(member)%></td>
+					<td><%= link_to "Edit",edit_member_path(member)%></td>
+					<td><%= link_to "Delete",member_path(member), method: :delete, data: { confirm: 'Are you sure?' }%></td>
+				</tr>
+			<% end %>
+		</table>
+	</div>
+<% else%>
+	<h3>No members found </h3>	
+<%end%>

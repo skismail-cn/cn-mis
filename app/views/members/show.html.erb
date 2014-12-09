@@ -1,0 +1,75 @@
+<div id="show_member">
+	<h3 class="half_width"> Information of <%= @member.Name%></h3>
+	<h3>
+		<%= link_to "Edit",edit_member_path(@member)%>
+		<%= link_to "Delete",member_path(@member), method: :delete, data: { confirm: 'Are you sure?' }%>
+		<%= link_to "Back",members_path%>
+	</h3>
+	<div class="half_width">
+		<p>
+			<%= label_tag :id %><br>
+			<%= @member.id %>
+		</p>
+
+		<p>
+			<%= label_tag :Name %><br>
+			<%= @member.Name %>
+		</p>
+
+		<p>
+			<%= label_tag :Email%><br>
+			<%= @member.Email %>
+		</p>
+
+		<p>
+			<%= label_tag :designation_id%><br>
+			<%= @member.designation.name %>
+		</p>
+
+		<p>
+			<%= label_tag :department_id%><br>
+			<%= @member.department.name %>
+		</p>
+
+		<p>
+			<%= label_tag :location_id%><br>
+			<%= @member.location.name %>
+		</p>
+
+		<p>
+			<%= label_tag :Salary %><br>
+			<%= @member.Salary %>
+		</p>
+	</div>
+	<div class="half_width">
+		<p>
+			<%= label_tag :Joining_Date %><br>
+			<%= @member.Joining_Date %>
+		</p>
+
+		<p>
+			<%= label_tag :Confirmation_Date %><br>
+			<%= @member.Confirmation_Date %>
+		</p>
+		
+		<p>
+			<%= label_tag :Reporting_To, "Reporting To Member ID"%><br>
+			<%= @member.Reporting_To %>
+		</p>
+
+		<p>
+			<%= label_tag :Earned_Leave %><br>
+			<%= @member.Earned_Leave %>
+		</p>
+
+		<p>
+			<%= label_tag :Casual_Leave %><br>
+			<%= @member.Casual_Leave %>
+		</p>
+
+		<p>
+			<%= label_tag :Sick_Leave %><br>
+			<%= @member.Sick_Leave %>
+		</p>
+	</div>
+</div>

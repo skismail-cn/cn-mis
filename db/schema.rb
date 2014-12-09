@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208104310) do
+ActiveRecord::Schema.define(version: 20141209045806) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,13 +62,13 @@ ActiveRecord::Schema.define(version: 20141208104310) do
     t.date     "Joining_Date"
     t.date     "Confirmation_Date"
     t.string   "Hot_Skills"
-    t.decimal  "Salary",                      precision: 10, scale: 2
+    t.decimal  "Salary",                       precision: 10, scale: 2
     t.integer  "Reporting_To"
-    t.integer  "Earned_Leave",      limit: 2
-    t.integer  "Casual_Leave",      limit: 2
-    t.integer  "Sick_Leave",        limit: 2
-    t.string   "Password"
-    t.string   "Confirm_Password"
+    t.integer  "Earned_Leave",       limit: 2
+    t.integer  "Casual_Leave",       limit: 2
+    t.integer  "Sick_Leave",         limit: 2
+    t.string   "salt"
+    t.string   "encrypted_password"
     t.integer  "designation_id"
     t.integer  "department_id"
     t.integer  "location_id"

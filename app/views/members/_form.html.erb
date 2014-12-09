@@ -4,7 +4,7 @@
 			<div id="error">
 				<%= pluralize(@member.errors.count,"Error")%> prohibited this member form saving.
 				<ul>
-					<% @member.errors.fulf_messages.each do |msg|%>
+					<% @member.errors.full_messages.each do |msg|%>
 						<li><%= msg %></li>
 					<% end %>
 				</ul>
@@ -12,22 +12,83 @@
 		<% end %>
 
 		<div id="form_elements">
-			<p>
-				<%= f.label :Name %>
-				<%= f.text_field :Name %>
-			</p>
-			<p>
-				<%= f.label :Email%>
-				<%= f.text_field :Email %>
-			</p>
-			<p>
-				<%= f.label :Password%>
-				<%= f.password_field :Password %>
-			</p>
-			<p>
-				<%= f.label :Confirm_Password%>
-				<%= f.password_field :Confirm_Password %>
-			</p>
+			<div class="half_width">
+				<p>
+					<%= f.label :Name %><br>
+					<%= f.text_field :Name %>
+				</p>
+
+				<p>
+					<%= f.label :Email%><br>
+					<%= f.email_field(:Email)  %>
+				</p>
+
+				<p>
+					<%= f.label :department_id%><br>
+					<%= f.collection_select(:department_id, Department.all, :id, :name,:include_blank => true) %>
+				</p>
+
+				<p>
+					<%= f.label :designation_id%><br>
+					<%= f.collection_select(:designation_id, Designation.all, :id, :name,:include_blank => true) %>
+				</p>
+
+
+				<p>
+					<%= f.label :location_id%><br>
+					<%= f.collection_select(:location_id, Location.all, :id, :name,:include_blank => true) %>
+				</p>
+
+				<p>
+					<%= f.label :Salary %><br>
+					<%= f.number_field(:Salary, in: 0.0..10000000, step: 0.1) %>
+				</p>
+
+				<p>
+					<%= f.label :Reporting_To%><br>
+					<%= f.collection_select(:Reporting_To, Member.all, :id, :Name,:include_blank => true) %>
+				</p>
+			</div>
+			<div class="half_width">
+				<p>
+					<%= f.label :Earned_Leave %><br>
+					<%= f.number_field(:Earned_Leave, in: 0..10, step: 1) %>
+				</p>
+
+				<p>
+					<%= f.label :Casual_Leave %><br>
+					<%= f.number_field(:Casual_Leave, in: 0..10, step: 1) %>
+				</p>
+
+				<p>
+					<%= f.label :Sick_Leave %><br>
+					<%= f.number_field(:Sick_Leave, in: 0..10, step: 1) %>
+				</p>
+
+				<p>
+					<%= f.label :Joining_Date %><br>
+					<%= f.date_field(:Joining_Date) %>
+				</p>
+
+				<p>
+					<%= f.label :Confirmation_Date %><br>
+					<%= f.date_field(:Confirmation_Date) %>
+				</p>
+
+				<p>
+					<%= f.label :password%><br>
+					<%= f.password_field :password %>
+				</p>
+
+				<p>
+					<%= f.label :password_confirmation%><br>
+					<%= f.password_field :password_confirmation %>
+				</p>
+					
+				<p>
+					<%= f.submit %>
+				</p>
+			</div>
 		</div>
 	<% end %>
 </div>

@@ -1,4 +1,5 @@
 class Location < ActiveRecord::Base
+	has_many :members, dependent: :destroy
 	validates :name, :presence=>true, :uniqueness => true, :length => {:in => 5..20}
 	self.per_page = 5
 

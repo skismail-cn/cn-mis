@@ -33,7 +33,10 @@ Rails.application.routes.draw do
     post "search" =>"skills#search", on: :collection
   end
 
-  resources :members
+  resources :members do
+    post "search" =>"member#search", on: :collection
+    post "fetchdesignation" =>"member#fetchdesignation", on: :collection
+  end
   
     
   # The priority is based upon order of creation: first created -> highest priority.

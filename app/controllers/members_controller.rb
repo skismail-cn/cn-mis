@@ -26,7 +26,7 @@ class MembersController < ApplicationController
 
 	def update
 		@member = Member.find(params[:id])
-		if @member.update
+		if @member.update(member_params)
 			redirect_to member_path(@member)
 		else
 			render "edit"
@@ -42,8 +42,12 @@ class MembersController < ApplicationController
 		end
 	end
 
+	def fetchdesignation
+		puts params[]
+	end
+
 	def member_params
 		params.require(:member).permit(:Name,:Email,:Joining_Date,:Confirmation_Date,
-		:Hot_Skills,:Salary,:Reporting_To,:Earned_Leave,:Casual_Leave,:Sick_Leave,:Password,:Confirm_Password)
+		:Hot_Skills,:Salary,:Reporting_To,:Earned_Leave,:Casual_Leave,:Sick_Leave,:password,:password_confirmation)
 	end
 end
