@@ -8,6 +8,7 @@
 </div>
 
 <% if @members && @members.length>0%>
+	<p>Download:<%= link_to "CSV", members_path(format: "csv") %></p>
 	<div id="member_list">
 		<table>
 			<tr>
@@ -33,6 +34,8 @@
 				</tr>
 			<% end %>
 		</table>
+		<!-- #render page links in the view: -->
+		<%= will_paginate @posts %>
 	</div>
 <% else%>
 	<h3>No members found </h3>	

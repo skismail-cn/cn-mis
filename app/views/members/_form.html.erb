@@ -28,9 +28,9 @@
 					<%= f.collection_select(:department_id, Department.all, :id, :name,:include_blank => true) %>
 				</p>
 
-				<p>
+				<p id="designation_V">
 					<%= f.label :designation_id%><br>
-					<%= f.collection_select(:designation_id, Designation.all, :id, :name,:include_blank => true) %>
+					<%= f.collection_select(:designation_id, Designation.all, :id, :name,:include_blank => false) %>
 				</p>
 
 
@@ -47,6 +47,11 @@
 				<p>
 					<%= f.label :Reporting_To%><br>
 					<%= f.collection_select(:Reporting_To, Member.all, :id, :Name,:include_blank => true) %>
+				</p>
+
+				<p>
+					<%= f.label :hot_Skills%><br>
+					<%= f.collection_select(:hot_Skills, Skill.all, :id, :name,:include_blank => false,:multiple=>true) %>
 				</p>
 			</div>
 			<div class="half_width">

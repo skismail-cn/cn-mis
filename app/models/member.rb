@@ -1,6 +1,6 @@
 class Member < ActiveRecord::Base
 	attr_accessor :password
-	self.per_page = 5
+	self.per_page = 1
 
 	belongs_to :designation
 	belongs_to :department

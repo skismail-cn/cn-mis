@@ -7,7 +7,10 @@ $ ->
   	$.ajax(
   		type: "POST",
   		data: { department: $(this).val() },
-  		url: "fetchdesignation",
-  		success: console.log "done",
-  		faliure: console.log "failed"
+  		url: "http://localhost:3000/members/fetchdesignation",
+  		error: (jqXHR, textStatus, errorThrown) ->
+            $('body').append "AJAX Error: #{textStatus}"
+        success: (data, textStatus, jqXHR) ->
+            $("#member_designation_id").html(data)
+            $("#designation_V").show()
   	)

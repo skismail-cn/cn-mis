@@ -1,6 +1,10 @@
 class MembersController < ApplicationController
 	def index
-		@members = Member.all
+		@members = Member.paginate(:page => params[:page])
+		respond_to do |format|
+	    	format.html
+	    	format.csv { send_data @members.as_csv }
+  		end
 	end
 
 	def new
@@ -43,11 +47,19 @@ class MembersController < ApplicationController
 	end
 
 	def fetchdesignation
-		puts params[]
+		designations_str = nil
+		@designations = Designation.where("department_id = ?",params[:department]).order(:name)
+		if @designations && @designations.length >0
+			designations_str = ''
+			@designations.each do |d|
+				designations_str +="<option value=#{d.id}>#{d.name}</option>"
+			end
+		end
+		render plain: designations_str.inspect
 	end
 
 	def member_params
-		params.require(:member).permit(:Name,:Email,:Joining_Date,:Confirmation_Date,
-		:Hot_Skills,:Salary,:Reporting_To,:Earned_Leave,:Casual_Leave,:Sick_Leave,:password,:password_confirmation)
+		params.require(:member).permit(:Name,:Email,:department_id,:designation_id,:location_id,:Joining_Date,:Confirmation_Date,
+		:hot_Skills,:Salary,:Reporting_To,:Earned_Leave,:Casual_Leave,:Sick_Leave,:password,:password_confirmation)
 	end
 end
