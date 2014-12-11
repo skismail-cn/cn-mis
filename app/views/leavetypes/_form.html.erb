@@ -1,0 +1,25 @@
+<%= form_for(@leavetype) do |f| %>
+  <% if @leavetype.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@leavetype.errors.count, "error") %> prohibited this leavetype from being saved:</h2>
+
+      <ul>
+      <% @leavetype.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.check_box :status %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

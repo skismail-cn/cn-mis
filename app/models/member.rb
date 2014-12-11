@@ -1,6 +1,6 @@
 class Member < ActiveRecord::Base
 	attr_accessor :password
-	self.per_page = 1
+	self.per_page = 3
 
 	belongs_to :designation
 	belongs_to :department
@@ -8,7 +8,7 @@ class Member < ActiveRecord::Base
 
 	validates :Name, :presence =>true, :uniqueness =>true, :length =>{:in => 5..20}
 	validates :Email, :presence =>true, :uniqueness =>true
-	validates :Joining_Date,:Salary,:department_id,:designation_id,:location_id, :presence=>true
+	validates :Joining_Date,:Salary,:department_id,:designation_id,:location_id,:hot_Skills, :presence=>true
 	validates :password, :confirmation => true #password_confirmation attr
 	validates_length_of :password, :in => 6..20, :on => :create
 

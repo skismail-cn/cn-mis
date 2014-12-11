@@ -12,5 +12,4 @@ $ ->
             $('body').append "AJAX Error: #{textStatus}"
         success: (data, textStatus, jqXHR) ->
             $("#member_designation_id").html(data)
-            $("#designation_V").show()
   	)

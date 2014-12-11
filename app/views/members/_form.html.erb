@@ -28,7 +28,7 @@
 					<%= f.collection_select(:department_id, Department.all, :id, :name,:include_blank => true) %>
 				</p>
 
-				<p id="designation_V">
+				<p>
 					<%= f.label :designation_id%><br>
 					<%= f.collection_select(:designation_id, Designation.all, :id, :name,:include_blank => false) %>
 				</p>
@@ -51,7 +51,10 @@
 
 				<p>
 					<%= f.label :hot_Skills%><br>
-					<%= f.collection_select(:hot_Skills, Skill.all, :id, :name,:include_blank => false,:multiple=>true) %>
+					<% Skill::all.each do |a_value| %>
+						<%= f.check_box(:hot_Skills, { :multiple => true }, a_value.id) %>
+						<%= f.label a_value.name%><br>
+					<% end %>
 				</p>
 			</div>
 			<div class="half_width">

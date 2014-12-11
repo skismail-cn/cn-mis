@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @leavetype.name %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @leavetype.status %>
+</p>
+
+<%= link_to 'Edit', edit_leavetype_path(@leavetype) %> |
+<%= link_to 'Back', leavetypes_path %>

@@ -1,0 +1,39 @@
+<div id="location_actions">
+	<table>
+		<tr>
+			<td><%= link_to 'New Leavetype', new_leavetype_path %></td>
+			<td><%= link_to "Download CSV", leavetypes_path(format: "csv") %></td>
+			<td><%= link_to "Back", leavetypes_path %></td>
+		</tr>
+	</table>
+</div>
+
+<% if @leavetypes.length > 0 %>
+	
+	<table>
+		<tr>
+			<th>
+				<%= check_box_tag(:Select_all_LT) %>
+				<%= label_tag(:Select_all_LT, "Select All") %>
+			</th>
+			<th>Name</th>
+			<th>Status</th>
+			<th colspan="4">Permitted Operations</th>
+		</tr>
+
+		<% @leavetypes.each do |leavetype|%>
+			<tr>
+				<td><input type="checkbox" name="sample[]" class="check_location" /></td>
+				<td><%= leavetype.name %></td>
+				<td><%= leavetype.status %></td>
+		        <td><%= link_to 'Show', leavetype %></td>
+		        <td><%= link_to 'Edit', edit_leavetype_path(leavetype) %></td>
+		        <td><%= link_to 'Destroy', leavetype, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			</tr>
+		<% end %>
+	</table>
+<%else%>
+	<div id="no_leavetype">
+		<h2>No leave type found</h2>
+	</div>
+<%end%>

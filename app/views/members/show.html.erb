@@ -43,6 +43,10 @@
 	</div>
 	<div class="half_width">
 		<p>
+			<%= label_tag :hot_Skills %><br>
+			<%= @member.hot_Skills %>
+		</p>
+		<p>
 			<%= label_tag :Joining_Date %><br>
 			<%= @member.Joining_Date %>
 		</p>
@@ -53,8 +57,12 @@
 		</p>
 		
 		<p>
-			<%= label_tag :Reporting_To, "Reporting To Member ID"%><br>
-			<%= @member.Reporting_To %>
+			<%= label_tag :Reporting_To, "Reporting To"%><br>
+			<% if @member.Reporting_To %>
+				<%=link_to @superior_name, member_path(@member.Reporting_To)%>
+			<%else%>
+				<%= @superior_name %>
+			<%end%>
 		</p>
 
 		<p>

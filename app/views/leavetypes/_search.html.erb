@@ -1,0 +1,6 @@
+<%= form_tag(controller: "leavetypes", action: "search") do %>
+  <%= label_tag(:name, "Search for leave types:") %>
+  <%= label_tag(:name, "Name") %>
+  <%= text_field_tag(:name) %>
+  <%= submit_tag("Search") %>
+<% end %>

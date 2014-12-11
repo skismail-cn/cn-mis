@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :leavetypes
+
   resources :admins do
     get "lostpassword" => "admins#lostpassword", on: :collection
     post "lostpassword" => "admins#forgotpassword", on: :collection
@@ -34,8 +36,12 @@ Rails.application.routes.draw do
   end
 
   resources :members do
-    post "search" =>"member#search", on: :collection
+    post "search" =>"members#search", on: :collection
     post "fetchdesignation" =>"members#fetchdesignation", on: :collection
+  end
+
+  resources :leavetypes do
+    post "search" =>"leavetypes#search", on: :collection
   end
   
     

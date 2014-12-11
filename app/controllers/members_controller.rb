@@ -1,4 +1,5 @@
 class MembersController < ApplicationController
+	
 	def index
 		@members = Member.paginate(:page => params[:page])
 		respond_to do |format|
@@ -13,6 +14,8 @@ class MembersController < ApplicationController
 	
 	def create
 		@member = Member.create(member_params)
+		@member.hot_Skills = params['member']['hot_Skills'].delete_if { |a| a <="0" }.join(",")
+
 		if @member.save
 			redirect_to member_path(@member)
 		else
@@ -21,7 +24,20 @@ class MembersController < ApplicationController
 	end
 
 	def show
+		@superior_name= "None"
 		@member = Member.find(params[:id])
+		if @member.Reporting_To
+			superior = Member.select(:Name).find(@member.Reporting_To)
+			@superior_name= superior.Name
+		end
+		skill_set = Skill.select(:name).where("id in (#{@member.hot_Skills})")
+		skill_set_str =""
+		if skill_set && skill_set.length>0
+			skill_set.each do |sss|
+				skill_set_str += sss.name+", "
+			end
+		end
+		@member.hot_Skills = skill_set_str
 	end
 
 	def edit
@@ -30,6 +46,7 @@ class MembersController < ApplicationController
 
 	def update
 		@member = Member.find(params[:id])
+		@member.hot_Skills = params['member']['hot_Skills'].split(/,/)
 		if @member.update(member_params)
 			redirect_to member_path(@member)
 		else
@@ -39,10 +56,15 @@ class MembersController < ApplicationController
 
 	def destroy
 		@member = Member.find(params[:id])
-		if @member.destroy
-			redirect_to members_path, :notice => "Member deleted successfully"
+
+		if Member.find_by Reporting_To: @member.id 
+			redirect_to members_path, :notice => "Member deletion failed, has reporting personels"
 		else
-			redirect_to members_path, :notice => "Member deletion failed"
+			if @member.destroy
+				redirect_to members_path, :notice => "Member deleted successfully"
+			else
+				redirect_to members_path, :notice => "Member deletion failed"
+			end
 		end
 	end
 

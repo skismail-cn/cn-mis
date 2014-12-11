@@ -1,0 +1,41 @@
+<h1>Listing leave types</h1>
+<div>
+  <table>
+    <tr>
+      <td><%= link_to "Download CSV", leavetypes_path(format: "csv") %></td>
+      <td><%= render "search" %></td>
+    </tr>
+  </table>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>
+        <%= check_box_tag(:Select_all_LT) %>
+        <%= label_tag(:Select_all_LT, "Select All") %>
+      </th>
+      <th>Name</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @leavetypes.each do |leavetype| %>
+      <tr>
+        <td><input type="checkbox" name="sample[]" class="check_LT" /></td>
+        <td><%= leavetype.name %></td>
+        <td><%= leavetype.status %></td>
+        <td><%= link_to 'Show', leavetype %></td>
+        <td><%= link_to 'Edit', edit_leavetype_path(leavetype) %></td>
+        <td><%= link_to 'Destroy', leavetype, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate(@post)%>
+
+<br>
+
+<%= link_to 'New Leavetype', new_leavetype_path %>

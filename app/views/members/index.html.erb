@@ -2,7 +2,9 @@
 	<table>
 		<tr>
 			<td><%= link_to "Add member",new_member_path %></td>
-			<td><%= link_to "Search department", search_members_path %></td>
+		</tr>
+		<tr>
+			<td><%= render "search"%></td>
 		</tr>
 	</table>
 </div>
@@ -12,6 +14,7 @@
 	<div id="member_list">
 		<table>
 			<tr>
+				<th>Id</th>
 				<th>Name</th>
 				<th>Email</th>
 				<th>Reporting_To</th>
@@ -22,6 +25,7 @@
 			</tr>
 			<% @members.each do |member|%>
 				<tr>
+					<td><%= member.id%></td>
 					<td><%= member.Name%></td>
 					<td><%= member.Email%></td>
 					<td><%= member.Reporting_To%></td>
