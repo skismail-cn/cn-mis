@@ -1,0 +1,18 @@
+<div id="LDT_show">
+	<p>
+		<strong>Id:</strong>
+		<%= @leavedaytype.id%>
+	</p>
+	<p>
+		<strong>Name:</strong>
+		<%= @leavedaytype.name%>
+	</p>
+	<p>
+		<strong>Status:</strong>
+		<%= @leavedaytype.status%>
+	</p>
+	<p>
+		<%= link_to "Edit", edit_leavedaytype_path(@leavedaytype) %>
+		<%= link_to "Back", leavedaytypes_path %>
+	</p>
+</div>

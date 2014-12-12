@@ -3,10 +3,11 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 ready = ->
-  $('#Select_all_locations').click ->
+  $('#select_all_LS').click ->
     if ($(this).is(':checked'))
-        $('.check_location').attr('checked', true)
+        $('.check_LS').attr('checked', true)
     else 
-        $('.check_location').attr('checked', false)
+        $('.check_LS').attr('checked', false)
+
 $(document).ready(ready)
 $(document).on('page:load', ready)

@@ -1,0 +1,24 @@
+<div id="LS_form">
+	<%= form_for @leavestatus do |f| %>
+		<% if @leavestatus.errors.any? %>
+			<h3><%= pluralize(@leavestatus.errors.count, "Error")%> prohibitate this leave status to save</h3>
+			<ul>
+				<% @leavestatus.errors.full_messages.each do |msg|%>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		<% end %>
+
+		<p>
+			<%= f.label :name %>
+			<%= f.text_field :name %>
+		</p>
+		<p>
+			<%= f.label :status %>
+			<%= f.check_box :status %>
+		</p>
+		<p>
+			<%= f.submit %>
+		</p>
+	<% end %>
+</div>

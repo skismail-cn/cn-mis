@@ -1,0 +1,18 @@
+<div id="LS_show">
+	<p>
+		<strong>Id:</strong>
+		<%= @leavestatus.id%>
+	</p>
+	<p>
+		<strong>Name:</strong>
+		<%= @leavestatus.name%>
+	</p>
+	<p>
+		<strong>Status:</strong>
+		<%= @leavestatus.status%>
+	</p>
+	<p>
+		<%= link_to "Edit", edit_leavestatus_path(@leavestatus) %>
+		<%= link_to "Back", leavestatuses_path %>
+	</p>
+</div>

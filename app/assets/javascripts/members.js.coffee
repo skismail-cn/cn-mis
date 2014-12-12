@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$ ->
+ready = ->
   $("#member_department_id").change ->
   	$.ajax(
   		type: "POST",
@@ -13,3 +13,6 @@ $ ->
         success: (data, textStatus, jqXHR) ->
             $("#member_designation_id").html(data)
   	)
+
+$(document).ready(ready)
+$(document).on('page:load', ready)

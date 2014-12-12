@@ -1,0 +1,45 @@
+<div id="LS_index">
+	<div id="LS_action">
+		<table>
+			<tr>
+				<td><%= link_to "Back", leavestatuses_path %></td>
+			</tr>
+		</table>
+	</div>
+	<% if @leavestatuses && @leavestatuses.length>0%>
+		<div><%= link_to "Download CSV",leavestatuses_path(format: "csv")%></div>
+		<div id="LS_list">
+			<table>
+				<thead>
+					<tr>
+						<td>
+							<%= label_tag(:Select_all,"Select all")%>
+							<%= check_box_tag(:select_all_LS)%>
+						</td>
+						<td>Id</td>
+						<td>Name</td>
+						<td>Status</td>
+						<td colspan="3">Operations</td>
+					</tr>
+				</thead>
+				<tbody>
+					<% @leavestatuses.each do |leavestatus| %>
+						<tr>
+							<td><input type="checkbox" name="sample[]" value="" class="check_LS"></td>
+							<td><%= leavestatus.id %></td>
+							<td><%= leavestatus.name %></td>
+							<td><%= leavestatus.status %></td>
+							<td><%= link_to "View", leavestatus_path(leavestatus) %></td>
+							<td><%= link_to "Edit",edit_leavestatus_path(leavestatus) %></td>
+							<td>
+								<%= link_to "Delete",leavestatus_path(leavestatus), method: :delete, data: { confirm: 'Are you sure?' }%>
+							</td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	<%else%>
+		<h3>No leave status found</h3>
+	<%end%>
+</div>

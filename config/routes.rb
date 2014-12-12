@@ -43,6 +43,14 @@ Rails.application.routes.draw do
   resources :leavetypes do
     post "search" =>"leavetypes#search", on: :collection
   end
+
+  resources :leavedaytypes do
+    post "search" =>"leavedaytypes#search", on: :collection
+  end
+
+  resources :leavestatuses do
+    post "search" =>"leavestatuses#search", on: :collection
+  end
   
     
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,0 +1,50 @@
+<div id="leavedaytype_index">
+	<div id="actions">
+		<table>
+			<tr>
+				<td><%= link_to "New leave day type", new_leavedaytype_path %></td>
+				<td><%= render "search" %></td>
+			</tr>
+		</table>
+	</div>
+
+	<% if @leavedaytypes && @leavedaytypes.length>0 %>
+		<div><%= link_to "Download CSV",leavedaytypes_path(format: "csv")%></div>
+		<div id="leavedaytype_listing">
+			<table>
+				<thead>
+					<tr>
+						<th>
+							<%= check_box_tag(:select_all_LDT,'Select all')%>
+							<%= label_tag(:select_all)%>
+						</th>
+						<th>Id</th>
+						<th>Name</th>
+						<th>Status</th>
+						<th colspan="3">Operations</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<% @leavedaytypes.each do |leavedaytype| %>
+						<tr>
+							<td><input type="checkbox" name="sample[]" value="" class="check_LDT"></td>
+							<td><%= leavedaytype.id %></td>
+							<td><%= leavedaytype.name %></td>
+							<td><%= leavedaytype.status %></td>
+							<td><%= link_to "View",leavedaytype_path(leavedaytype) %></td>
+							<td><%= link_to "Edit",edit_leavedaytype_path(leavedaytype) %></td>
+							<td>
+								<%= link_to "Delete",leavedaytype_path(leavedaytype),method: :delete,data: {confirm: 'are you sure?'}%>
+							</td>
+						</tr>
+					<%end%>
+				</tbody>
+			</table>
+			<!-- pagination -->
+			<%= will_paginate(@post)%>
+		</div>
+	<%else%>
+		<h3>No leave day type found</h3>
+	<%end%>
+</div>

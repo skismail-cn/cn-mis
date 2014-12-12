@@ -1,0 +1,25 @@
+<div id="form_LDT">
+	<%= form_for @leavedaytype do |f| %>
+
+		<% if @leavedaytype.errors.any? %>
+			<h3><%= pluralize(@leavedaytype.errors.count, "Error")%> prohibitate this leave day type to save</h3>
+			<ul>
+				<% @leavedaytype.errors.full_messages.each do |msg|%>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		<% end %>
+
+		<p>
+			<%= f.label (:name) %>
+			<%= f.text_field (:name )%>
+		</p>
+		<p>
+			<%= f.label (:status) %>
+			<%= f.check_box (:status) %>
+		</p>
+		<p>
+			<%= f.submit %>
+		</p>
+	<% end %>
+</div>
