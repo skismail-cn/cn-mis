@@ -13,9 +13,9 @@ Rails.application.routes.draw do
 
   resources :sessions
 
-  resources :designation do
-    get "search" => "designation#search", on: :collection
-    post "search" => "designation#search_results", on: :collection
+  resources :designations do
+    get "search" => "designations#search", on: :collection
+    post "search" => "designations#search_results", on: :collection
   end
   
   resources :departments do
@@ -50,6 +50,11 @@ Rails.application.routes.draw do
 
   resources :leavestatuses do
     post "search" =>"leavestatuses#search", on: :collection
+  end
+
+  resources :leaves do
+    post "search" =>"leaves#search", on: :collection
+    post "fetchsuperior" =>"leaves#fetchsuperior", on: :collection
   end
   
     

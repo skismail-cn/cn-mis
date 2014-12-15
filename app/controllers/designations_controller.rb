@@ -1,9 +1,6 @@
-class DesignationController < ApplicationController
-
-	require 'csv'
-
+class DesignationsController < ApplicationController
 	def index
-		@designations = Designation.paginate(:page => params[:page])
+		@designations = Designation.paginate(:page => params[:page]).order(:id)
 		respond_to do |format|
 	    	format.html
 	    	format.csv { send_data @designations.as_csv }
@@ -45,7 +42,7 @@ class DesignationController < ApplicationController
 	def destroy
 		@designation = Designation.find(params[:id])
 		@designation.destroy
-		redirect_to designation_index_path
+		redirect_to designations_path
 	end
 
 	def search

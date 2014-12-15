@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141212104231) do
+ActiveRecord::Schema.define(version: 20141215051447) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,26 @@ ActiveRecord::Schema.define(version: 20141212104231) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "leaves", force: true do |t|
+    t.integer  "contact_number"
+    t.integer  "reporting_to"
+    t.date     "leave_start_date"
+    t.date     "leave_end_date"
+    t.text     "reason_for_leave"
+    t.text     "comments"
+    t.integer  "member_id"
+    t.integer  "leavetype_id"
+    t.integer  "leavedaytype_id"
+    t.integer  "leavestatus_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "leaves", ["leavedaytype_id"], name: "index_leaves_on_leavedaytype_id", using: :btree
+  add_index "leaves", ["leavestatus_id"], name: "index_leaves_on_leavestatus_id", using: :btree
+  add_index "leaves", ["leavetype_id"], name: "index_leaves_on_leavetype_id", using: :btree
+  add_index "leaves", ["member_id"], name: "index_leaves_on_member_id", using: :btree
 
   create_table "leavestatuses", force: true do |t|
     t.string   "name"

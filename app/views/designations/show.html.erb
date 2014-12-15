@@ -19,7 +19,7 @@
 			<td><%=@designation.department.status %></td>
 			<td><%= link_to "Edit",edit_designation_path(@designation)%></td>
 			<td><%= link_to 'Destroy', designation_path(@designation), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-			<td><%= link_to "Back",designation_index_path%></td>
+			<td><%= link_to "Back",designations_path%></td>
 		</tr>
 	</table>
 </div>

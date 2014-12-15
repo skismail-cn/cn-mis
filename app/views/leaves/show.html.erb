@@ -1,0 +1,57 @@
+<div id="leave_show">
+	<p id="notice"><%= notice %></p>
+	<h3>
+		<%= link_to "Edit",edit_leafe_path(@leave)%>
+		<%= link_to "Destroy",leafe_path(@leave),method: :delete, data: {confirm: 'Are you sure?'} %>
+		<%= link_to "Back",leaves_path%>
+	</h3>
+	<div class="half_width">
+		<p>
+			<%= label_tag :id %><br>
+			<%= @leave.id %>
+		</p>
+		<p>
+			<%= label_tag :member_id, "Applicant name"%><br>
+			<%= @leave.member.Name %>
+		</p>
+		<p>
+			<%= label_tag :leavetype_id, "Leave type"%><br>
+			<%= @leave.leavetype.name %>
+		</p>
+		<p>
+			<%= label_tag :leavedaytype_id, "Leave day type"%><br>
+			<%= @leave.leavedaytype.name %>
+		</p>
+		<p>
+			<%= label_tag :leavestatus_id, "Leave status"%><br>
+			<%= @leave.leavestatus.name %>
+		</p>
+		<p>
+			<%= label_tag :reporting_to %><br>
+			<%= @superior_name %>
+		</p>
+		<p>
+			<%= label_tag :contact_number %><br>
+			<%= @leave.contact_number %>
+		</p>
+	</div>
+
+	<div class="half_width">
+		<p>
+			<%= label_tag :leave_start_date %><br>
+			<%= @leave.leave_start_date %>
+		</p>
+		<p>
+			<%= label_tag :leave_end_date %><br>
+			<%= @leave.leave_end_date %>
+		</p>
+		<p>
+			<%= label_tag :reason_for_leave %><br>
+			<%= @leave.reason_for_leave %>
+		</p>
+		<p>
+			<%= label_tag :comments %><br>
+			<%= @leave.comments %>
+		</p>
+	</div>
+</div>

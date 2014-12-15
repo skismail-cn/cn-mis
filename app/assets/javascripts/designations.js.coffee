@@ -3,10 +3,10 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 ready = ->
-  $('#Select_all_designations').click ->
-    if ($(this).is(':checked'))
-        $('.check_designation').attr('checked', true)
-    else 
-        $('.check_designation').attr('checked', false)
+	$('body').on "click", "#Select_all_designations", ->  
+	    if ($(this).is(':checked'))
+	      $('.check_designation').attr('checked', true)
+	    else
+	      $('.check_designation').attr('checked', false)
 $(document).ready(ready)
 $(document).on('page:load', ready)
