@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :departments do
     get "search" => "departments#search", on: :collection
     post "search" => "departments#search_results", on: :collection
+    #post "autocompleteajax" => "departments#autocompleteajax", on: :collection
   end
 
   resources :locations do
@@ -55,6 +56,10 @@ Rails.application.routes.draw do
   resources :leaves do
     post "search" =>"leaves#search", on: :collection
     post "fetchsuperior" =>"leaves#fetchsuperior", on: :collection
+  end
+
+  resources :projectstatuses do
+    post "search" =>"projectstatuses#search", on: :collection
   end
   
     

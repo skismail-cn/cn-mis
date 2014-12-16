@@ -1,0 +1,6 @@
+<%= form_tag(controller: "projectstatuses", action: "search") do %>
+  <%= label_tag(:name, "Search for project statuses:") %>
+  <%= label_tag(:name, "Name") %>
+  <%= text_field_tag(:name) %>
+  <%= submit_tag("Search") %>
+<% end %>

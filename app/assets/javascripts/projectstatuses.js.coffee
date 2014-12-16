@@ -3,14 +3,12 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 ready = ->
-  $("#selectall_departments").click ->
+  $("#Select_all_project_status").click ->
     if $(this).is(":checked")
-      $("div input").attr "checked", true
+      $(".check_project_status").attr "checked", true
     else
-      $("div input").attr "checked", false
+      $(".check_project_status").attr "checked", false
     return
 
 $(document).ready(ready)
 $(document).on('page:load', ready)
-
-

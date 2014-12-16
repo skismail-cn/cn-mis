@@ -1,0 +1,26 @@
+<div id="project_status_form">
+	<%= form_for @projectstatus do |f|%>
+		<% if @projectstatus.errors.any? %>
+			<h3><%= pluralize(@projectstatus.errors.count, "Error")%> prohibitate this project status to save</h3>
+			<ul>
+				<% @projectstatus.errors.full_messages.each do |msg|%>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		<% end %>
+
+		<div id="project_status_form_elements">
+			<p>
+				<%= f.label(:name)%>
+				<%= f.text_field(:name)%>
+			</p>
+			<p>
+				<%= f.label(:status)%>
+				<%= f.check_box(:status)%>
+			</p>
+			<p>
+				<%= f.submit%>
+			</p>
+		</div>
+	<% end %>
+</div>

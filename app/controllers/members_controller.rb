@@ -42,11 +42,12 @@ class MembersController < ApplicationController
 
 	def edit
 		@member = Member.find(params[:id])
+		@member.hot_Skills = @member.hot_Skills.split(/,/)
 	end
 
 	def update
 		@member = Member.find(params[:id])
-		@member.hot_Skills = params['member']['hot_Skills'].split(/,/)
+		@member.hot_Skills = params['member']['hot_Skills'].delete_if { |a| a <="0" }.join(",")
 		if @member.update(member_params)
 			redirect_to member_path(@member)
 		else
