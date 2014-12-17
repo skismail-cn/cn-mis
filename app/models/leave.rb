@@ -1,4 +1,7 @@
 class Leave < ActiveRecord::Base
+
+  self.per_page = 5
+  
   belongs_to :member
   belongs_to :leavetype
   belongs_to :leavedaytype

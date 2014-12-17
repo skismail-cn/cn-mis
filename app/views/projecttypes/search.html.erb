@@ -1,0 +1,38 @@
+<div id="project_status_actions">
+	<table>
+		<tr>
+			<th><%= link_to "Add Project Type", new_projecttype_path %></th>
+			<th><%= link_to "Back", projecttypes_path %></th>
+		</tr>
+	</table>
+</div>
+
+<% if @projecttypes && @projecttypes.length >0 %>
+	<div><%= link_to "Download CSV", projecttypes_path(format: "csv") %></div>
+
+	<table>
+		<tr>
+			<th>
+				<%= check_box_tag(:Select_all_projecttypes) %>
+				<%= label_tag(:Select_all_projecttypes, "Select All") %>
+			</th>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Status</th>
+			<th colspan="3">Actions</th>
+		</tr>
+		<% @projecttypes.each do |projecttype| %>
+			<tr>
+				<td><input type="checkbox" name="sample[]" class="check_project_status" /></td>
+				<td><%= projecttype.id%></td>
+				<td><%= projecttype.name%></td>
+				<td><%= projecttype.status%></td>
+				<td><%= link_to "View", projecttype_path(projecttype)%></td>
+				<td><%= link_to "Update", edit_projecttype_path(projecttype)%></td>
+				<td><%= link_to "Destroy", projecttype_path(projecttype), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			</tr>
+		<%end%>
+	</table>
+<%else%>
+	<h3>No project tupes found</h3>
+<%end%>

@@ -80,9 +80,9 @@ class MembersController < ApplicationController
 		end
 		render plain: designations_str.inspect
 	end
-
-	def member_params
-		params.require(:member).permit(:Name,:Email,:department_id,:designation_id,:location_id,:Joining_Date,:Confirmation_Date,
-		:hot_Skills,:Salary,:Reporting_To,:Earned_Leave,:Casual_Leave,:Sick_Leave,:password,:password_confirmation)
-	end
+	private
+		def member_params
+			params.require(:member).permit(:Name,:Email,:department_id,:designation_id,:location_id,:Joining_Date,:Confirmation_Date,
+			:hot_Skills,:Salary,:Reporting_To,:Earned_Leave,:Casual_Leave,:Sick_Leave,:password,:password_confirmation)
+		end
 end

@@ -1,4 +1,5 @@
 class Member < ActiveRecord::Base
+
 	attr_accessor :password
 	self.per_page = 3
 
@@ -6,7 +7,11 @@ class Member < ActiveRecord::Base
 	belongs_to :department
 	belongs_to :location
 
-	validates :Name, :presence =>true, :uniqueness =>true, :length =>{:in => 5..20}
+	has_many :leaves, dependent: :restrict_with_error
+	#has_many :Reporting_To, class_name: "Member",foreign_key: "id"
+  	#belongs_to :id, class_name: "Member"
+
+	validates :Name, :presence =>true, :uniqueness =>false, :length =>{:in => 5..30}
 	validates :Email, :presence =>true, :uniqueness =>true
 	validates :Joining_Date,:Salary,:department_id,:designation_id,:location_id,:hot_Skills, :presence=>true
 	validates :password, :confirmation => true #password_confirmation attr

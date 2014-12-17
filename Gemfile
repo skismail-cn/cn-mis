@@ -45,3 +45,6 @@ gem 'spring',        group: :development
 # Use Will paginate for pagination
 gem 'will_paginate', '~> 3.0.6'
 
+#Use jquery datepicker
+#gem 'jquery_datepicker'
+

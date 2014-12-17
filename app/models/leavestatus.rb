@@ -1,5 +1,9 @@
 class Leavestatus < ActiveRecord::Base
+
 	self.per_page = 5
+
+	has_many :leaves, dependent: :restrict_with_error
+	
 	validates :name,:presence => true, :uniqueness =>true
 
 	def self.as_csv

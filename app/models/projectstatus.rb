@@ -1,6 +1,8 @@
 class Projectstatus < ActiveRecord::Base
-	validates :name, :presence=>true, :uniqueness => true, :length => {:in => 5..100}
+
 	self.per_page = 5
+	
+	validates :name, :presence=>true, :uniqueness => true, :length => {:in => 5..100}
 
 	def self.as_csv
 		CSV.generate do |csv|

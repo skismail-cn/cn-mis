@@ -1,0 +1,40 @@
+<div id="project_modes_actions">
+	<table>
+		<tr>
+			<th><%= link_to "Add Project Mode", new_projectmode_path %></th>
+			<th><%= render "search"%></th>
+		</tr>
+	</table>
+</div>
+
+<% if @projectmodes && @projectmodes.length >0 %>
+	<div><%= link_to "Download CSV", projectmodes_path(format: "csv") %></div>
+
+	<table>
+		<tr>
+			<th>
+				<%= check_box_tag(:Select_all_projectmodes) %>
+				<%= label_tag(:Select_all_projectmodes, "Select All") %>
+			</th>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Status</th>
+			<th colspan="3">Actions</th>
+		</tr>
+		<% @projectmodes.each do |projectmode| %>
+			<tr>
+				<td><input type="checkbox" name="sample[]" class="check_project_mode" /></td>
+				<td><%= projectmode.id%></td>
+				<td><%= projectmode.name%></td>
+				<td><%= projectmode.status%></td>
+				<td><%= link_to "View", projectmode_path(projectmode)%></td>
+				<td><%= link_to "Update", edit_projectmode_path(projectmode)%></td>
+				<td><%= link_to "Destroy", projectmode_path(projectmode), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			</tr>
+		<%end%>
+	</table>
+	<!-- #render page links in the view: -->
+	<%= will_paginate @posts %>
+<%else%>
+	<h3>No project tupes found</h3>
+<%end%>

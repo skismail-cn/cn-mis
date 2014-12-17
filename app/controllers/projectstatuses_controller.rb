@@ -1,4 +1,5 @@
 class ProjectstatusesController < ApplicationController
+	
 	def index
 		@projectstatuses = Projectstatus.paginate(:page => params[:page]).order(:id)
 		respond_to do |format|

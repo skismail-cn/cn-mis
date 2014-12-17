@@ -75,12 +75,12 @@
 
 				<p>
 					<%= f.label :Joining_Date %><br>
-					<%= f.date_field(:Joining_Date) %>
+					<%= f.date_select(:Joining_Date) %>
 				</p>
 
 				<p>
 					<%= f.label :Confirmation_Date %><br>
-					<%= f.date_field(:Confirmation_Date) %>
+					<%= f.date_select(:Confirmation_Date,:include_blank => true) %>
 				</p>
 
 				<p>

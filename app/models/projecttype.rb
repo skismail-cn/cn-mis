@@ -1,10 +1,7 @@
-class Leavedaytype < ActiveRecord::Base
-
+class Projecttype < ActiveRecord::Base
 	self.per_page = 5
-
-	has_many :leaves, dependent: :restrict_with_error
-
-	validates :name, :presence=>true,:uniqueness=>true
+	
+	validates :name, :presence=>true, :uniqueness => true, :length => {:in => 5..100}
 
 	def self.as_csv
 		CSV.generate do |csv|

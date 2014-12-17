@@ -1,6 +1,6 @@
 class Department < ActiveRecord::Base
-	has_many :designations, dependent: :destroy
-	has_many :members, dependent: :destroy
+	has_many :designations, dependent: :restrict_with_error
+	has_many :members, dependent: :restrict_with_error
 	validates :name, :presence => true, :uniqueness => true, :length => { :in => 5..20 }
 	#validates :status, :presence => true, :default=>true
 

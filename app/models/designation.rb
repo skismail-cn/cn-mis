@@ -1,6 +1,6 @@
 class Designation < ActiveRecord::Base
   belongs_to :department
-  has_many :members, dependent: :destroy
+  has_many :members, dependent: :restrict_with_error
   validates :name, :presence => true, :length => { :in => 5..20 }
 
   self.per_page = 5

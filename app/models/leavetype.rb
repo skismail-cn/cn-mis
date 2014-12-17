@@ -1,5 +1,9 @@
 class Leavetype < ActiveRecord::Base
+
 	self.per_page = 3
+
+	has_many :leaves, dependent: :restrict_with_error
+	
 	validates :name,:presence=>true
 
 	def self.as_csv
