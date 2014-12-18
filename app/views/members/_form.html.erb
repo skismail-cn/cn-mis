@@ -46,7 +46,11 @@
 
 				<p>
 					<%= f.label :Reporting_To%><br>
-					<%= f.collection_select(:Reporting_To, Member.all, :id, :Name,:include_blank => true) %>
+					<% if @member.id%>
+						<%= f.collection_select(:Reporting_To, Member.where("id !=?",@member.id), :id, :Name,:include_blank => "Self / None") %>
+					<% else %>
+						<%= f.collection_select(:Reporting_To, Member.all, :id, :Name,:include_blank => "Self / None") %>
+					<% end %>
 				</p>
 
 				<p>
@@ -97,6 +101,7 @@
 					<%= f.submit %>
 				</p>
 			</div>
+			<div class="clear"></div>
 		</div>
 	<% end %>
 </div>

@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  client_name: MyString
+  client_email: MyString
+  bdm_name: MyString
+  start_date: 2014-12-18 18:25:09
+  end_date: 2014-12-18 18:25:09
+  project_cost: 9.99
+  team_members: MyString
+  projectstatus_id: 
+  projecttype_id: 
+  projectmode_id: 
+  member_id: 
+  depratment_id: 
+  location_id: 
+
+two:
+  name: MyString
+  client_name: MyString
+  client_email: MyString
+  bdm_name: MyString
+  start_date: 2014-12-18 18:25:09
+  end_date: 2014-12-18 18:25:09
+  project_cost: 9.99
+  team_members: MyString
+  projectstatus_id: 
+  projecttype_id: 
+  projectmode_id: 
+  member_id: 
+  depratment_id: 
+  location_id: 

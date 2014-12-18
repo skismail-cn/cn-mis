@@ -1,6 +1,8 @@
 class Projectstatus < ActiveRecord::Base
 
 	self.per_page = 5
+
+	has_many :projects, dependent: :restrict_with_error
 	
 	validates :name, :presence=>true, :uniqueness => true, :length => {:in => 5..100}
 

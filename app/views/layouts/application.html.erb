@@ -12,7 +12,6 @@
 	<div id="header">
 		<!-- <div align="center" style="padding:5px;"> Demo application Dev:Ismail Guidence: Debobrata Sinha</div> -->
 		<div id="logo">MIS</div>
-		
 		<div id="user_nav">
 			<% if current_user %>
 			    Logged in as <%= current_user.email %>.
@@ -27,30 +26,32 @@
 				<%= link_to "Forget password ", lostpassword_admins_path %>
 			<% end %>
 		</div>
+	</div>
 
-		<div id="mainmenu">
-			<ul id="yw0">
-			  <li><%= link_to "Home", root_path %></li>
-			  <li><%= link_to "Departments" ,departments_path %></li>
-			  <li><%= link_to "Designations" ,designations_path %></li>
-			  <li><%= link_to "Locations" ,locations_path %></li>
-			  <li><%= link_to "Availabilities" ,availabilities_path %></li>
-			  <li><%= link_to "Skills",skills_path%></li>
-			  <li><%= link_to "Members",members_path%></li>
-			  <li><%= link_to "Leave types",leavetypes_path%></li>
-			  <li><%= link_to "Leave day types",leavedaytypes_path%></li>
-			  <li><%= link_to "Leave status",leavestatuses_path%></li>
-			  <li><%= link_to "Leaves",leaves_path%></li>
-			  <li><%= link_to "Project Status",projectstatuses_path%></li>
-			  <li><%= link_to "Project types",projecttypes_path%></li>
-			  <li><%= link_to "Project modes",projectmodes_path%></li>
-			</ul>
-		</div>
+	<div id="mainmenu">
+		<ul id="yw0">
+		  <li><%= link_to "Home", root_path %></li>
+		  <li><%= link_to "Departments" ,departments_path %></li>
+		  <li><%= link_to "Designations" ,designations_path %></li>
+		  <li><%= link_to "Locations" ,locations_path %></li>
+		  <li><%= link_to "Availabilities" ,availabilities_path %></li>
+		  <li><%= link_to "Skills",skills_path%></li>
+		  <li><%= link_to "Members",members_path%></li>
+		  <li><%= link_to "Leave types",leavetypes_path%></li>
+		  <li><%= link_to "Leave day types",leavedaytypes_path%></li>
+		  <li><%= link_to "Leave status",leavestatuses_path%></li>
+		  <li><%= link_to "Leaves",leaves_path%></li>
+		  <li><%= link_to "Project Status",projectstatuses_path%></li>
+		  <li><%= link_to "Project types",projecttypes_path%></li>
+		  <li><%= link_to "Project modes",projectmodes_path%></li>
+		</ul>
+	</div>
 
 	<div id="content">
 		<% flash.each do |name, msg| %>
-		  	<%= content_tag :div, msg, :id => "flash_#{name}", :class => "flash-notice" %>
+	  		<%= content_tag :div, msg, :id => "flash_#{name}", :class => "flash-notice" %>
 		<% end %>
+		
 		<%= yield %>
 	</div>
 	

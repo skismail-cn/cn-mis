@@ -1,6 +1,22 @@
 class LocationsController < ApplicationController
 
 	def index
+#===========practice ====================		
+=begin
+loc_array = Array.new(7) do |l|
+l
+end
+5.times {loc_array << 5 }
+loc_array.delete(5)
+
+arr = ['a', 'b', 'c', 'd', 'e', 'f']
+
+render plain: loc_array.inspect
+#render plain: loc_hash.inspect
+return false
+=end
+#===========practice ====================
+
 		@locations = Location.paginate(:page => params[:page]).order(:id)
 		respond_to do |format|
 	    	format.html

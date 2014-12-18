@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141217121919) do
+ActiveRecord::Schema.define(version: 20141218125922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -121,12 +121,49 @@ ActiveRecord::Schema.define(version: 20141217121919) do
   add_index "members", ["designation_id"], name: "index_members_on_designation_id", using: :btree
   add_index "members", ["location_id"], name: "index_members_on_location_id", using: :btree
 
+  create_table "payments", force: true do |t|
+    t.datetime "payment_date"
+    t.decimal  "payment_amount", precision: 12, scale: 2
+    t.text     "payment_desc"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "payments", ["project_id"], name: "index_payments_on_project_id", using: :btree
+
   create_table "projectmodes", force: true do |t|
     t.string   "name"
     t.boolean  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "projects", force: true do |t|
+    t.string   "name"
+    t.string   "client_name"
+    t.string   "client_email"
+    t.string   "bdm_name"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.decimal  "project_cost",     precision: 12, scale: 2
+    t.string   "team_members"
+    t.integer  "projectstatus_id"
+    t.integer  "projecttype_id"
+    t.integer  "projectmode_id"
+    t.integer  "member_id"
+    t.integer  "depratment_id"
+    t.integer  "location_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "projects", ["depratment_id"], name: "index_projects_on_depratment_id", using: :btree
+  add_index "projects", ["location_id"], name: "index_projects_on_location_id", using: :btree
+  add_index "projects", ["member_id"], name: "index_projects_on_member_id", using: :btree
+  add_index "projects", ["projectmode_id"], name: "index_projects_on_projectmode_id", using: :btree
+  add_index "projects", ["projectstatus_id"], name: "index_projects_on_projectstatus_id", using: :btree
+  add_index "projects", ["projecttype_id"], name: "index_projects_on_projecttype_id", using: :btree
 
   create_table "projectstatuses", force: true do |t|
     t.string   "name"

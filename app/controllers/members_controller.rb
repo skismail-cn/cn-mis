@@ -48,11 +48,17 @@ class MembersController < ApplicationController
 	def update
 		@member = Member.find(params[:id])
 		@member.hot_Skills = params['member']['hot_Skills'].delete_if { |a| a <="0" }.join(",")
-		if @member.update(member_params)
-			redirect_to member_path(@member)
-		else
-			render "edit"
-		end
+
+		#if Member.exists?(:id => params['member']['Reporting_To'])
+
+			if @member.update(member_params)
+				redirect_to member_path(@member), notice: 'Member updaated successfully.'
+			else
+				render "edit", notice: 'Member updation failed!'
+			end
+		#else
+			#redirect_to edit_member_path(@member), notice: 'Member updation failed as reporting to is invalid!'
+		#end
 	end
 
 	def destroy
