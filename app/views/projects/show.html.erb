@@ -1,0 +1,90 @@
+<div id="project_listing">
+	<div id="project_menu">
+		<h4> Project details</h4>
+		<table>
+			<thead></thead>
+			<tbody>
+				<tr>
+					<td><%= link_to "Back", projects_path %></td>
+					<td><%= link_to "Update", edit_project_path(@project) %></td>
+					<td><%= link_to "Destroy", project_path(@project), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<% if @project %>
+		<div id="project_list">
+			<div class="half_width">
+				<div class="field">
+					<%= label_tag :name %><br>
+					<%= @project.name %>
+				</div>
+				<div class="field">
+					<%= label_tag :client_name %><br>
+					<%= @project.client_name %>
+				</div>
+				<div class="field">
+					<%= label_tag :client_email %><br>
+					<%= @project.client_email %>
+				</div>
+				<div class="field">
+					<%= label_tag :bdm_name %><br>
+					<%= @project.bdm_name %>
+				</div>
+				<div class="field">
+					<%= label_tag :start_date %><br>
+					<%= @project.start_date %>
+				</div>
+				<div class="field">
+					<%= label_tag :end_date %><br>
+					<%= @project.end_date %>
+				</div>
+				<div class="field">
+					<%= label_tag :project_cost %><br>
+					<%= @project.project_cost %>
+				</div>
+			</div>
+			<div class="half_width">
+				<div class="field">
+					<%= label_tag :member_id,'Team leader'%><br>
+					<%= @project.member.Name %>
+				</div>
+				<div class="field">
+					<%= label_tag :team_members%><br>
+					<%= @project.team_members %>
+				</div>
+				<div class="field">
+					<%= label_tag :projectstatus_id%><br>
+					<%= @project.projectstatus.name %>
+				</div>
+				<div class="field">
+					<%= label_tag :projecttype_id%><br>
+					<%= @project.projecttype.name %>
+				</div>
+				<div class="field">
+					<%= label_tag :projectmode_id%><br>
+					<%= @project.projectmode.name %>
+				</div>
+				<div class="field">
+					<%= label_tag :department_id%><br>
+					<%= @project.department.name %>
+				</div>
+				<div class="field">
+					<%= label_tag :location_id%><br>
+					<%= @project.location.name %>
+				</div>
+			</div>
+		</div>
+		<div id="payments_list">
+			<h4>Payments</h4>
+			<%= render @project.payments %>
+		</div>
+		<div id="payments_form">
+			<h4>Add a payment:</h4>
+			<%= render "payments/form" %>
+		</div>
+	<% else %>
+		<h4>No projects found.</h4>
+	<% end %>
+</div>

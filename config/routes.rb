@@ -69,6 +69,12 @@ Rails.application.routes.draw do
   resources :projectmodes do
     post "search" =>"projectmodes#search", on: :collection
   end
+
+  resources :projects do
+    post "search" =>"projects#search", on: :collection
+    resources :payments
+  end
+
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

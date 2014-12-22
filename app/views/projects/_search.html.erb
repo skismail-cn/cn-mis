@@ -1,0 +1,48 @@
+<div>
+	<%= form_tag(controller: "projects", action: "search") do %>
+		<h4>
+			<%= label_tag(:name, "Search for projects:") %><br>
+		</h4>
+		<div class="half_width">
+			<p>
+				<%= label_tag(:name, "Name") %><br>
+				<%= text_field_tag(:name) %>
+			</p>
+
+			<p>
+				<%= label_tag(:projectmode) %><br>
+				<%= text_field_tag(:projectmode) %>
+			</p>
+
+			<p>
+				<%= label_tag(:projecttype) %><br>
+				<%= text_field_tag(:projecttype) %>
+			</p>
+
+			<p>
+				<%= label_tag(:projectstatus) %><br>
+				<%= text_field_tag(:projectstatus) %>
+			</p>
+		</div>
+		<div class="half_width">
+			<p>
+				<%= label_tag(:member) %><br>
+				<%= text_field_tag(:member) %>
+			</p>
+
+			<p>
+				<%= label_tag(:department) %><br>
+				<%= text_field_tag(:department) %>
+			</p>
+
+			<p>
+				<%= label_tag(:location) %><br>
+				<%= text_field_tag(:location) %>
+			</p>
+
+			<p>
+				<%= submit_tag("Search") %>
+			</p>
+		</div>
+	<% end %>
+</div>

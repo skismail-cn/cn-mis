@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141218125922) do
+ActiveRecord::Schema.define(version: 20141222112316) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,7 +122,7 @@ ActiveRecord::Schema.define(version: 20141218125922) do
   add_index "members", ["location_id"], name: "index_members_on_location_id", using: :btree
 
   create_table "payments", force: true do |t|
-    t.datetime "payment_date"
+    t.date     "payment_date"
     t.decimal  "payment_amount", precision: 12, scale: 2
     t.text     "payment_desc"
     t.integer  "project_id"
@@ -144,21 +144,21 @@ ActiveRecord::Schema.define(version: 20141218125922) do
     t.string   "client_name"
     t.string   "client_email"
     t.string   "bdm_name"
-    t.datetime "start_date"
-    t.datetime "end_date"
+    t.date     "start_date"
+    t.date     "end_date"
     t.decimal  "project_cost",     precision: 12, scale: 2
     t.string   "team_members"
     t.integer  "projectstatus_id"
     t.integer  "projecttype_id"
     t.integer  "projectmode_id"
     t.integer  "member_id"
-    t.integer  "depratment_id"
+    t.integer  "department_id"
     t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "projects", ["depratment_id"], name: "index_projects_on_depratment_id", using: :btree
+  add_index "projects", ["department_id"], name: "index_projects_on_department_id", using: :btree
   add_index "projects", ["location_id"], name: "index_projects_on_location_id", using: :btree
   add_index "projects", ["member_id"], name: "index_projects_on_member_id", using: :btree
   add_index "projects", ["projectmode_id"], name: "index_projects_on_projectmode_id", using: :btree

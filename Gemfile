@@ -46,5 +46,6 @@ gem 'spring',        group: :development
 gem 'will_paginate', '~> 3.0.6'
 
 #Use jquery datepicker
-#gem 'jquery_datepicker'
+#gem 'jquery_datepicker', '~> 0.4'
+gem 'bootstrap-datepicker-rails', '~> 1.3.1.1'
 

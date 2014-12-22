@@ -1,0 +1,51 @@
+<div id="projects_listing">
+	<div id="projects_menu">
+		<table>
+			<thead></thead>
+			<tbody>
+				<tr>
+					<td><%= render "search"%></td>
+				</tr>
+				<tr>
+					<td><%= link_to "Add project", new_project_path %></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<% if @projects && @projects.length > 0 %>
+		<p>Download:<%= link_to "CSV", projects_path(format: "csv") %></p>
+		<div id="project_list">
+			<table>
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>NAME</th>
+						<th>STATUS</th>
+						<th>TYPE</th>
+						<th>MODE</th>
+						<th colspan="3">OPERATIONS</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @projects.each do |p| %>
+						<tr>
+							<td><%= p.id%></td>
+							<td><%= p.name%></td>
+							<td><%= p.projectstatus.name%></td>
+							<td><%= p.projecttype.name%></td>
+							<td><%= p.projectmode.name%></td>
+							<td><%= link_to "View", project_path(p) %></td>
+							<td><%= link_to "Update", edit_project_path(p) %></td>
+							<td><%= link_to "Destroy", project_path(p), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+			<!-- #render page links in the view: -->
+			<%= will_paginate @posts %>
+		</div>
+	<% else %>
+		<h4>No projects found.</h4>
+	<% end %>
+</div>

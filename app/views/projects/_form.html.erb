@@ -1,0 +1,80 @@
+<div id="project_add_edit_form">
+	<%= form_for @project do |f| %>
+		<% if @project.errors.any?%>
+			<div id="project_errors">
+				<h5><%= pluralize(@project.errors.count, 'error')%>  prohibited this project from creation.</h5>
+				<ul>
+					<% @project.errors.full_messages.each do |msg|%>
+						<li><%= msg %></li>
+					<% end %>
+				</ul>
+			</div>
+		<% end %>
+		<div class="half_width">
+			<div class="field">
+				<%= f.label :name %><br>
+				<%= f.text_field :name %>
+			</div>
+			<div class="field">
+				<%= f.label :client_name %><br>
+				<%= f.text_field :client_name %>
+			</div>
+			<div class="field">
+				<%= f.label :client_email %><br>
+				<%= f.email_field :client_email %>
+			</div>
+			<div class="field">
+				<%= f.label :bdm_name %><br>
+				<%= f.text_field :bdm_name %>
+			</div>
+			<div class="field">
+				<%= f.label :start_date %><br>
+				<%= f.date_field :start_date,{'data-provide'=> 'datepicker','data-date-format'=>'yyyy/mm/dd','data-auto-close'=>true} %>
+			</div>
+			<div class="field">
+				<%= f.label :end_date %><br>
+				<%= f.text_field :end_date,{'data-provide'=> 'datepicker','data-date-format'=>'yyyy/mm/dd'} %>
+			</div>
+			<div class="field">
+				<%= f.label :project_cost %><br>
+				<%= f.number_field :project_cost %>
+			</div>
+		</div>
+		<div class="half_width">
+			<div class="field">
+				<%= f.label :member_id, 'Team leader'%><br>
+				<%= f.collection_select(:member_id, Member.all, :id, :Name,:include_blank => true) %>
+			</div>
+			<div class="field">
+				<%= f.label :team_members%><br>
+				<% Member::all.each do |a_value| %>
+					<%= f.check_box(:team_members, { :multiple => true }, a_value.id) %>
+					<%= f.label a_value.Name%><br>
+				<% end %>
+			</div>
+			<div class="field">
+				<%= f.label :projectstatus_id%><br>
+				<%= f.collection_select(:projectstatus_id, Projectstatus.all, :id, :name,:include_blank => true) %>
+			</div>
+			<div class="field">
+				<%= f.label :projecttype_id%><br>
+				<%= f.collection_select(:projecttype_id, Projecttype.all, :id, :name,:include_blank => true) %>
+			</div>
+			<div class="field">
+				<%= f.label :projectmode_id%><br>
+				<%= f.collection_select(:projectmode_id, Projectmode.all, :id, :name,:include_blank => true) %>
+			</div>
+			<div class="field">
+				<%= f.label :department_id%><br>
+				<%= f.collection_select(:department_id, Department.all, :id, :name,:include_blank => true) %>
+			</div>
+			<div class="field">
+				<%= f.label :location_id%><br>
+				<%= f.collection_select(:location_id, Location.all, :id, :name,:include_blank => true) %>
+			</div>
+			<div class="field">
+				<%= f.submit%>
+			</div>
+		</div>
+	<% end %>
+</div>
