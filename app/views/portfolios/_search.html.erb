@@ -1,0 +1,11 @@
+<div>
+	<%= form_tag(controller: "portfolios", action: "search") do %>
+	  <%= label_tag(:name, "Search for portfolios:") %>
+	  <p>
+	  	<%= label_tag(:projecttype, "Project Category") %><br>
+	  	<%= text_field_tag(:projecttype) %>
+	  </p>
+	  
+	  <p><%= submit_tag("Search") %></p>
+	<% end %>
+</div>

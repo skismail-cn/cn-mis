@@ -18,9 +18,12 @@ class Member < ActiveRecord::Base
 	validates :Joining_Date,:Salary,:department_id,:designation_id,:location_id,:hot_Skills, :presence=>true
 	validates :password, :confirmation => true #password_confirmation attr
 	validates_length_of :password, :in => 6..20, :on => :create
+	validates :Salary, :presence =>true, :numericality =>true, :length => 1..15
 
-	before_save :encrypt_password,:check_superior
+	before_save :encrypt_password,:validate_foreign_key
 	after_save :clear_password
+
+	private
 
 	def encrypt_password
 		if password.present?
@@ -29,9 +32,20 @@ class Member < ActiveRecord::Base
 		end
 	end
 
-	def check_superior
-		#self.where("id = ?",self.Reporting_To).present?
+	def validate_foreign_key
 		self.Reporting_To && Member.exists?(:id => self.Reporting_To)
+		if self.designation.nil?
+			errors.add(:base, 'invalid designation')
+			false
+		end
+		if self.department.nil?
+			errors.add(:base, 'invalid department')
+			false
+		end
+		if self.location.nil?
+			errors.add(:base, 'invalid location')
+			false
+		end
 	end
 	def clear_password
 		self.password = nil

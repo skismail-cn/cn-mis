@@ -1,0 +1,44 @@
+<div id="Show_portfolio_status">
+	<h3>
+		<%= link_to "Edit",edit_portfolio_path(@portfolio)%>
+		<%= link_to "Delete",portfolio_path(@portfolio), method: :delete, data: { confirm: 'Are you sure?' }%>
+		<%= link_to "Back",portfolios_path%>
+	</h3>
+	<div class="half_width">
+		<p>
+			<%= label_tag :id %><br>
+			<%= @portfolio.id %>
+		</p>
+
+		<p>
+			<%= label_tag :project_id%><br>
+			<%= @portfolio.project.name %>
+		</p>
+
+		<p>
+			<%= label_tag :projecttype_id, 'Project type'%><br>
+			<%= @portfolio.projecttype.name %>
+		</p>
+
+		<p>
+			<%= label_tag :project_caption %><br>
+			<%= @portfolio.project_caption %>
+		</p>
+
+		<p>
+			<%= label_tag :project_url%><br>
+			<%= link_to @portfolio.project_url, project_path(@portfolio.project.id) %>
+		</p>
+
+		<p>
+			<%= label_tag :status %><br>
+			<%= @portfolio.status %>
+		</p>
+
+		<p>
+			<%= label_tag :created_at%><br>
+			<%= @portfolio.created_at %>
+		</p>
+	</div>
+
+</div>

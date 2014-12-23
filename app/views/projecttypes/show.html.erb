@@ -1,18 +1,24 @@
-<div id="Show_project_status">
-	<table>
-		<tr>
-			<th>Id</th>
-			<th>Nmae</th>
-			<th>Status</th>
-			<th colspan="3">Actions</th>
-		</tr>
-		<tr>
-			<td><%= @projecttype.id%></td>
-			<td><%= @projecttype.name%></td>
-			<td><%= @projecttype.status%></td>
-			<td><%= link_to "Update", edit_projecttype_path(@projecttype)%></td>
-			<td><%= link_to "Destroy", projecttype_path(@projecttype), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-			<td><%= link_to "Back",projecttypes_path %></td>
-		</tr>
-	</table>
+<div id="Show_portfolio_status">
+	<h3>
+		<%= link_to "Edit",edit_projecttype_path(@projecttype)%>
+		<%= link_to "Delete",projecttype_path(@projecttype), method: :delete, data: { confirm: 'Are you sure?' }%>
+		<%= link_to "Back",projecttypes_path %>
+	</h3>
+	<div class="half_width">
+		<p>
+			<%= label_tag :id %><br>
+			<%= @projecttype.id %>
+		</p>
+
+		<p>
+			<%= label_tag :name%><br>
+			<%= @projecttype.name %>
+		</p>
+
+		<p>
+			<%= label_tag :status%><br>
+			<%= @projecttype.status %>
+		</p>
+	</div>
+
 </div>

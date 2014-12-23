@@ -10,8 +10,11 @@ class Project < ActiveRecord::Base
   belongs_to :location
 
   has_many :payments, dependent: :destroy
+  has_one :portfolio, dependent: :destroy
 
   default_scope {order('created_at DESC')}
+
+  before_save :validate_foreign_keys
 
   #self.start_date = self.created_at
 
@@ -28,4 +31,34 @@ class Project < ActiveRecord::Base
 			end
 		end
 	end
+
+  private
+
+  def validate_foreign_keys
+    
+    if self.projectstatus.nil?
+      errors.add(:base, "Please select a valid member")
+      false
+    end
+    if self.projecttype.nil?
+      errors.add(:base, "Please select a valid project type")
+      false
+    end
+    if self.projectmode.nil?
+      errors.add(:base, "Please select a valid project mode")
+      false
+    end
+    if self.member.nil?
+      errors.add(:base, "Please select a valid member")
+      false
+    end
+    if self.department.nil?
+      errors.add(:base, "Please select a valid department")
+      false
+    end
+    if self.location.nil?
+      errors.add(:base, "Please select a valid location")
+      false
+    end
+  end
 end

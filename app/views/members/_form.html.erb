@@ -25,7 +25,7 @@
 
 				<p>
 					<%= f.label :department_id%><br>
-					<%= f.collection_select(:department_id, Department.all, :id, :name,:include_blank => true) %>
+					<%= f.collection_select(:department_id, Department.all, :id, :name, { :include_blank => true }, { :data => { :remote => true, :url => url_for(:controller => "members", :action => "fetchdesignation") } }) %>
 				</p>
 
 				<p>
@@ -41,7 +41,7 @@
 
 				<p>
 					<%= f.label :Salary %><br>
-					<%= f.number_field(:Salary, in: 0.0..10000000, step: 0.1) %>
+					<%= f.text_field :Salary %>
 				</p>
 
 				<p>

@@ -1,0 +1,39 @@
+<div id="add_portfolio_form">
+	<%= form_for @portfolio do |f|%>
+		<% if @portfolio.errors.any? %>
+			<div id="error">
+				<%= pluralize(@portfolio.errors.count,"Error")%> prohibited this portfolio form saving.
+				<ul>
+					<% @portfolio.errors.full_messages.each do |msg|%>
+						<li><%= msg %></li>
+					<% end %>
+				</ul>
+			</div>
+		<% end %>
+
+		<div id="form_elements">
+			<div class="half_width">
+				<% unless ["edit", "update"].include?(action_name) %>
+					<p>
+						<%= f.label :project_id%><br>
+						<%= f.collection_select(:project_id, Project.joins("LEFT JOIN portfolios ON projects.id = portfolios.project_id").where("portfolios.project_id IS null"), :id, :name,:include_blank => true) %>
+					</p>
+				<% end %>
+				<p>
+					<%= f.label :project_caption%><br>
+					<%= f.text_field :project_caption %>
+				</p>
+
+				<p>
+					<%= f.label(:status)%>
+					<%= f.check_box(:status)%>
+				</p>
+
+				<p>
+					<%= f.submit %>
+				</p>
+			</div>
+			<div class="clear"></div>
+		</div>
+	<% end %>
+</div>

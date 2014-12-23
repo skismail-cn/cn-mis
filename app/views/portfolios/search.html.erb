@@ -1,0 +1,33 @@
+<div id="portfolios_actions">
+	<table>
+		<tr>
+			<td><%= link_to "Back",portfolios_path %></td>
+		</tr>
+	</table>
+</div>
+
+<% if @portfolios && @portfolios.length>0%>
+	<p>Download:<%= link_to "CSV", portfolios_path(format: "csv") %></p>
+	<div id="portfolio_list">
+		<table>
+			<tr>
+				<th>Id</th>
+				<th>Caption</th>
+				<th>Project url</th>
+				<th colspan="3">Operations</th>
+			</tr>
+			<% @portfolios.each do |portfolio|%>
+				<tr>
+					<td><%= portfolio.id%></td>
+					<td><%= portfolio.project_caption%></td>
+					<td><%= portfolio.project_url%></td>
+					<td><%= link_to "View",portfolio_path(portfolio)%></td>
+					<td><%= link_to "Edit",edit_portfolio_path(portfolio)%></td>
+					<td><%= link_to "Delete",portfolio_path(portfolio), method: :delete, data: { confirm: 'Are you sure?' }%></td>
+				</tr>
+			<% end %>
+		</table>
+	</div>
+<% else%>
+	<h3>No portfolios found </h3>	
+<%end%>
