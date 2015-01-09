@@ -38,7 +38,7 @@ Rails.application.routes.draw do
 
   resources :members do
     post "search" =>"members#search", on: :collection
-    post "fetchdesignation" =>"members#fetchdesignation", on: :collection
+    get "fetchdesignation" =>"members#fetchdesignation", on: :collection
   end
 
   resources :leavetypes do

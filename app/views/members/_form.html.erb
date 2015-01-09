@@ -86,16 +86,17 @@
 					<%= f.label :Confirmation_Date %><br>
 					<%= f.date_select(:Confirmation_Date,:include_blank => true) %>
 				</p>
+				<% unless ["new", "create"].include?(action_name) %>
+					<p>
+						<%= f.label :password%><br>
+						<%= f.password_field :password %>
+					</p>
 
-				<p>
-					<%= f.label :password%><br>
-					<%= f.password_field :password %>
-				</p>
-
-				<p>
-					<%= f.label :password_confirmation%><br>
-					<%= f.password_field :password_confirmation %>
-				</p>
+					<p>
+						<%= f.label :password_confirmation%><br>
+						<%= f.password_field :password_confirmation %>
+					</p>
+				<% end %>
 					
 				<p>
 					<%= f.submit %>

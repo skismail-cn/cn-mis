@@ -76,15 +76,15 @@ class MembersController < ApplicationController
 	end
 
 	def fetchdesignation
-		designations_str = nil
-		@designations = Designation.where("department_id = ?",params['member'][:department_id]).order(:name)
-		if @designations && @designations.length >0
-			designations_str = ''
-			@designations.each do |d|
-				designations_str +="<option value=#{d.id}>#{d.name}</option>"
+		@designations_str = nil
+		designations = Designation.where("department_id = ?",params['member'][:department_id]).order(:name)
+		if designations && designations.length >0
+			@designations_str = ''
+			designations.each do |d|
+				@designations_str +="<option value=#{d.id}>#{d.name}</option>"
 			end
 		end
-		render plain: designations_str.inspect
+		#render plain: @designations_str.inspect
 	end
 	private
 		def member_params
