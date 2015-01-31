@@ -121,11 +121,6 @@ ActiveRecord::Schema.define(version: 20141226091728) do
   add_index "members", ["designation_id"], name: "index_members_on_designation_id", using: :btree
   add_index "members", ["location_id"], name: "index_members_on_location_id", using: :btree
 
-  create_table "news", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "payments", force: true do |t|
     t.date     "payment_date"
     t.decimal  "payment_amount", precision: 12, scale: 2
